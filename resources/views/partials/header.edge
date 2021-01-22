@@ -8,5 +8,10 @@
   <navbar>
     <a href="/" class="text-blue-500 no-underline hover:underline">Home</a>
     <a href="/" class="text-blue-500 no-underline hover:underline ml-2">Archives</a>
+    @if(auth.isAuthenticated)
+    <span class="ml-2">|</span>
+    <a href="/~admin" class="text-blue-500 no-underline hover:underline ml-2">Admin</a>
+    <a href="/~logout" class="text-blue-500 no-underline hover:underline ml-2">Logout</a>
+    @endif
   </navbar>
 </header>
