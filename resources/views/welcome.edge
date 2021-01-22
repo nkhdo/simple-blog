@@ -1,41 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AdonisJS - A Modern Web Framework For Node.js</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet">
-  
-</head>
-<body>
+@layout('layouts/master')
+@set('title', 'Welcome!')
 
-  <main>
-    <div>
-      <h1 class="title"> It Works! </h1>
-      <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
-        <div class="flex-shrink-0">
-          <img class="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo">
-        </div>
-        <div>
-          <div class="text-xl font-medium text-black">ChitChat</div>
-          <p class="text-gray-500">You have a new message!</p>
-        </div>
-      </div>
-
-      <ul>
-        <li>
-          The route for this page is defined inside <code>start/routes.ts</code> file
-        </li>
-
-        <li>
-          You can update this page by editing <code>resources/views/welcome.edge</code> file
-        </li>
-
-        <li>
-          If you run into problems, you can reach us on <a href="https://discord.gg/vDcEjq6?">Discord</a> or the <a href="https://forum.adonisjs.com/">Forum</a>.
-        </li>
-      </ul>
-    </div>
-  </main>
-</body>
-</html>
+@section('main')
+<div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+  <div class="flex-shrink-0">
+    <img class="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo">
+  </div>
+  <div>
+    <div class="text-xl font-medium text-black">ChitChat</div>
+    <p class="text-gray-500">You have a new message!</p>
+  </div>
+</div>
+@endsection
