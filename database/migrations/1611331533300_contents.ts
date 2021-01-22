@@ -8,6 +8,7 @@ export default class Contents extends BaseSchema {
       table.increments('id')
       table.string('title').notNullable()
       table.string('slug').notNullable().unique().index()
+      table.enum('type', ['page', 'post']).defaultTo('post').index()
       table.text('description')
       table.jsonb('tags').defaultTo('[]')
       table.jsonb('content').defaultTo('{}')

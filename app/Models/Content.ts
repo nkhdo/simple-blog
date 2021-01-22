@@ -12,13 +12,16 @@ export default class Content extends BaseModel {
   public slug: string
 
   @column()
+  public type: 'page' | 'post'
+
+  @column()
   public description: string
 
   @column()
-  public tags: string[]
+  public tags: string
 
   @column()
-  public content: Record<string, any>
+  public content: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

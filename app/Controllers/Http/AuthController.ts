@@ -49,7 +49,7 @@ export default class AuthController {
     const userCount = await User.query().count('id')
     if (userCount[0]['count(`id`)'] === 0) {
       // no user -> create
-      return response.redirect().toRoute('setup')
+      return response.redirect().toRoute('AuthController.setup')
     }
 
     return view.render('login')
