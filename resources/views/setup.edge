@@ -1,0 +1,47 @@
+@layout('layouts/master')
+@set('title', 'Create Admin Account')
+
+@section('main')
+  <p class="my-4">There's no admin account, create one now!</p>
+  <form action="{{ route('AuthController.setup') }}" method="post">
+    <div class="mb-4">
+      <input
+        type="text"
+        name="email"
+        placeholder="Admin email"
+        value="{{ flashMessages.get('email') || '' }}"
+        class="block border border-grey-light w-full p-2 rounded"
+      />
+      <p class="text-red-500">{{ flashMessages.get('errors.email') || '' }}</p>
+    </div>
+
+    <div class="mb-4">
+      <input 
+        type="password"
+        name="password"
+        placeholder="Password"
+        class="block border border-grey-light w-full p-2 rounded"
+      />
+      <p class="text-red-500">{{ flashMessages.get('errors.password') || '' }}</p>
+    </div>
+
+    <div class="mb-4">
+      <input
+        type="password"
+        name="password_confirmation"
+        placeholder="Confirm Password"
+        class="block border border-grey-light w-full p-2 rounded"
+      />
+      <p class="text-red-500">{{ flashMessages.get('errors.password_confirmation') || '' }}</p>
+    </div>
+
+    <div>
+      <button
+        type="submit"
+        class="w-full text-center py-2 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none my-1"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+@endsection
