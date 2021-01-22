@@ -3,7 +3,23 @@ import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import User from 'App/Models/User'
 
 export default class AuthController {
+  public async renderSetup({ view, auth, response }: HttpContextContract) {
+    if (auth.isAuthenticated) {
+      return response.redirect('/')
+    }
+    const userCount = await User.query().count('id')
+    if (userCount[0]['count(`id`)'] > 0) {
+      return response.redirect('/')
+    }
+    return view.render('setup')
+  }
+
   public async setup({ request, auth, response }: HttpContextContract) {
+    const userCount = await User.query().count('id')
+    if (userCount[0]['count(`id`)'] > 0) {
+      return response.redirect('/')
+    }
+
     const validationSchema = schema.create({
       email: schema.string({ trim: true }, [
         rules.email(),
@@ -25,6 +41,20 @@ export default class AuthController {
     response.redirect('/')
   }
 
+  public async renderLogin({ view, auth, response }: HttpContextContract) {
+    if (auth.isAuthenticated) {
+      return response.redirect('/')
+    }
+
+    const userCount = await User.query().count('id')
+    if (userCount[0]['count(`id`)'] === 0) {
+      // no user -> create
+      return response.redirect().toRoute('setup')
+    }
+
+    return view.render('login')
+  }
+
   public async login({ auth, request, response }: HttpContextContract) {
     const validationSchema = schema.create({
       email: schema.string({ trim: true }, [rules.email()]),
@@ -36,6 +66,12 @@ export default class AuthController {
     })
 
     await auth.attempt(email, password, !!remember)
+
+    response.redirect('/')
+  }
+
+  public async logout({ auth, response }: HttpContextContract) {
+    await auth.logout()
 
     response.redirect('/')
   }

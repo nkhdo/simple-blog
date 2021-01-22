@@ -22,7 +22,8 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.on('/').render('welcome')
 
-Route.on('~setup').render('setup')
+Route.get('~setup', 'AuthController.renderSetup')
 Route.post('~setup', 'AuthController.setup')
-Route.on('~login').render('login')
+Route.get('~login', 'AuthController.renderLogin')
 Route.post('~login', 'AuthController.login')
+Route.get('~logout', 'AuthController.logout')
