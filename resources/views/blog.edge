@@ -8,11 +8,29 @@
     {{post.createdAt.toFormat('yyyy-MM-dd')}}
     <a
       href="/{{post.slug}}"
-      class="text-blue-500 no-underline hover:underline ml-2"
+      class="text-blue-500 no-underline hover:underline ml-5"
     >
       {{post.title}}
     </a>
   <div>
   @endeach
+
+  @if(filter)
+  <div class="mt-3">
+    <a 
+      href="/blog"
+      class="text-blue-500 no-underline hover:underline"
+    >Remove filter</a>
+  </div>
+  @elseif(tags.length)
+  <div class="mt-3">
+  @each(tag in tags)
+    <a 
+      href="/blog?tag={{tag}}"
+      class="text-blue-500 no-underline hover:underline"
+    >#{{tag}}</a>
+  @endeach
+  </div>
+  @endif
 </div>
 @endsection

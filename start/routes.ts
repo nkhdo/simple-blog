@@ -21,7 +21,6 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.on('/').render('welcome')
-Route.get('blog', 'BlogsController.renderBlog')
 
 Route.get('~setup', 'AuthController.renderSetup')
 Route.post('~setup', 'AuthController.setup')
@@ -39,3 +38,6 @@ Route.group(() => {
 })
   .prefix('~admin')
   .middleware('auth')
+
+Route.get('blog', 'ContentsController.posts')
+Route.get(':slug', 'ContentsController.show')

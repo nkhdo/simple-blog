@@ -28,4 +28,9 @@ export default class Content extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  public get tagsArray(): string[] {
+    if (!this.tags) return []
+    return this.tags.split(',').map((t) => t.trim())
+  }
 }
