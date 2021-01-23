@@ -4,9 +4,11 @@
 
 @section('main')
 <h1>{{ content.title }}</h1>
+@if(content.type === 'post')
 <p>
   <span>{{ content.createdAt.toFormat('yyyy/MM/dd HH:mm') }}</span>
 </p>
+@endif
 @if(content.description)
 <p>
   {{ content.description }}
