@@ -1,8 +1,22 @@
 import MarkdownIt from 'markdown-it'
+import hljs from 'highlight.js'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Content from 'App/Models/Content'
 
-const md = MarkdownIt()
+const md = MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: true,
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(lang, str).value
+      } catch (__) {}
+    }
+
+    return '' // use external default escaping
+  },
+})
 
 export default class ContentsController {
   public async welcome({ view }: HttpContextContract) {
