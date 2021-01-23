@@ -3,16 +3,19 @@ import Config from 'App/Models/Config'
 
 export default class SiteConfig {
   public async handle({ view }: HttpContextContract, next: () => Promise<void>) {
-    // code for middleware goes here. ABOVE THE NEXT CALL
-    const configs = await Config.all()
+    const siteConfigs = await Config.findBy('key', 'site_configs')
 
-    const siteConfigs: Record<string, string> = {}
-    configs.forEach((config) => {
-      siteConfigs[config.key] = config.value
-    })
+    let parsed: Record<string, any>
+    try {
+      if (siteConfigs) {
+        parsed = JSON.parse(siteConfigs.value)
+      } else parsed = {}
+    } catch (err) {
+      parsed = {}
+    }
 
     view.share({
-      siteConfigs,
+      siteConfigs: parsed,
     })
 
     await next()

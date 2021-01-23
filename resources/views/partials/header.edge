@@ -6,6 +6,10 @@
   <navbar>
     <a href="/">Home</a>
     <span>/</span>
+    @each(item in (siteConfigs.menuItems || []))
+    <a href="{{item.path}}">{{item.title}}</a>
+    <span>/</span>
+    @endeach
     <a href="/blog">Blog</a>
     @if(auth.isAuthenticated)
     <span>|</span>
