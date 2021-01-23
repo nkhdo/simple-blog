@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title || 'Blog Admin' }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
   <link rel="stylesheet" href="/dist/styles.css">
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js" async defer></script>
 </head>
 <body class="container max-w-4xl mx-auto p-3">
-  @include('partials/admin-header')
+  @include('partials/admin_header')
   <main>
     @!section('main')
   </main>

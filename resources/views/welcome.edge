@@ -9,7 +9,7 @@
       Please
       @if(auth.isAuthenticated)
         go to 
-        <a href="{{ route('AdminController.renderAdmin') }}" class="text-blue-500 no-underline hover:underline">admin</a>
+        <a href="/~admin" class="text-blue-500 no-underline hover:underline">admin</a>
         area
       @else
         <a href="{{ route('AuthController.renderLogin') }}" class="text-blue-500 no-underline hover:underline">login</a>
