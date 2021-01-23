@@ -37,6 +37,7 @@ Route.group(() => {
     Route.get('/new', 'Admin/ContentsController.new')
     Route.post('/', 'Admin/ContentsController.create')
     Route.get('/:id', 'Admin/ContentsController.edit')
+    Route.post('/:id', 'Admin/ContentsController.update')
     Route.delete('/:id', 'Admin/ContentsController.destroy')
   }).prefix('contents')
 })

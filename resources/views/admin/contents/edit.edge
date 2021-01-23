@@ -1,6 +1,67 @@
 @layout('layouts/admin')
-@set('title', 'Edit Content')
+@set('title', `Edit ${content.type}`)
 
 @section('main')
-{{ inspect(content.toJSON()) }}
+<h2>Edit {{content.type}}</h2>
+<form action="{{ route('Admin/ContentsController.update', { id: content.id }) }}" method="post">
+  <div>
+    <input
+      type="text"
+      maxlength="128"
+      name="title"
+      placeholder="{{content.type}} title"
+      value="{{content.title}}"
+      autofocus
+    />
+    <p>{{ flashMessages.get('errors.title') || '' }}</p>
+  </div>
+
+  <div>
+    <textarea
+      name="description"
+      maxlength="256"
+      placeholder="{{type}} description"
+    >{{content.description}}</textarea>
+    <p>{{ flashMessages.get('errors.description') || '' }}</p>
+  </div>
+
+  <div>
+    <textarea
+      id="content-input"
+      name="content"
+      placeholder="{{type}} content"
+      rows="10"
+    >{{content.content}}</textarea>
+    <p>{{ flashMessages.get('errors.content') || '' }}</p>
+  </div>
+
+  @if(type === 'post')
+  <div>
+    <input
+      type="text"
+      name="tags"
+      maxlength="128"
+      placeholder="tags, commas separated"
+      value="{{ flashMessages.get('tags') || '' }}"
+      autofocus
+    />
+    <p>{{ flashMessages.get('errors.tags') || '' }}</p>
+  </div>
+  @endif
+
+  <div>
+    <button type="submit">
+      Update {{content.type}}
+    </button>
+  </div>
+</form>
+
+<script>
+var simplemde = new SimpleMDE({ 
+  element: document.getElementById("content-input"),
+  autosave: {
+		enabled: false,
+	},
+});
+</script>
 @endsection

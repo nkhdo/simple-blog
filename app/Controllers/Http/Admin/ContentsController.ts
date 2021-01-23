@@ -65,6 +65,27 @@ export default class ContentsController {
     })
   }
 
+  public async update({ request, response, params }: HttpContextContract) {
+    const validationSchema = schema.create({
+      title: schema.string({ trim: true }, [rules.maxLength(128)]),
+      description: schema.string.optional({ trim: true }, [rules.maxLength(256)]),
+      content: schema.string({ trim: true }),
+      tags: schema.string.optional({ trim: true }, [rules.maxLength(128)]),
+    })
+
+    const contentDetails = await request.validate({
+      schema: validationSchema,
+    })
+
+    const content = await Content.findOrFail(params.id)
+    content.merge(contentDetails)
+
+    console.log('---> content', content)
+
+    await content.save()
+
+    return response.redirect().toRoute('Admin/ContentsController.index')
+  }
   public async destroy({ params, response }: HttpContextContract) {
     const content = await Content.findOrFail(params.id)
     await content.delete()
