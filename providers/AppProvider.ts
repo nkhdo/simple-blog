@@ -5,22 +5,11 @@ export default class AppProvider {
 
   constructor(protected app: ApplicationContract) {}
 
-  public register() {
-    // Register your own bindings
-  }
+  public register() {}
 
-  public async boot() {
-    const View = (await import('@ioc:Adonis/Core/View')).default
-    View.global('timestamp', () => {
-      return new Date().getTime()
-    })
-  }
+  public async boot() {}
 
-  public async ready() {
-    // App is ready
-  }
+  public async ready() {}
 
-  public async shutdown() {
-    // Cleanup, since app is going down
-  }
+  public async shutdown() {}
 }
