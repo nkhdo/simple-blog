@@ -10,7 +10,10 @@ export default class AppProvider {
   }
 
   public async boot() {
-    // IoC container is ready
+    const View = (await import('@ioc:Adonis/Core/View')).default
+    View.global('timestamp', () => {
+      return new Date().getTime()
+    })
   }
 
   public async ready() {
