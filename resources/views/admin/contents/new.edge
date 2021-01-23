@@ -2,5 +2,72 @@
 @set('title', `Create new ${type}`)
 
 @section('main')
-hihi
+<form action="{{ route('Admin/ContentsController.create') }}" method="post" class="mt-4">
+  <div class="mb-4">
+    <input
+      type="text"
+      maxlength="128"
+      name="title"
+      placeholder="{{type}} title"
+      value="{{ flashMessages.get('title') || '' }}"
+      class="block border border-grey-light w-full p-2 rounded"
+      autofocus
+    />
+    <p class="text-red-500">{{ flashMessages.get('errors.title') || '' }}</p>
+  </div>
+
+  <div class="mb-4">
+    <textarea
+      name="description"
+      maxlength="256"
+      placeholder="{{type}} description"
+      class="block border border-grey-light w-full p-2 rounded"
+    >{{ flashMessages.get('description') || '' }}</textarea>
+    <p class="text-red-500">{{ flashMessages.get('errors.description') || '' }}</p>
+  </div>
+
+  <div class="mb-4">
+    <textarea
+      id="content-input"
+      name="content"
+      placeholder="{{type}} content"
+      rows="10"
+      class="block border border-grey-light w-full p-2 rounded"
+    >{{ flashMessages.get('content') || '' }}</textarea>
+    <p class="text-red-500">{{ flashMessages.get('errors.content') || '' }}</p>
+  </div>
+
+  <div class="mb-4">
+    <input
+      type="text"
+      name="tags"
+      maxlength="128"
+      placeholder="tags, separated by comma (,)"
+      value="{{ flashMessages.get('tags') || '' }}"
+      class="block border border-grey-light w-full p-2 rounded"
+      autofocus
+    />
+    <p class="text-red-500">{{ flashMessages.get('errors.tags') || '' }}</p>
+  </div>
+  <input name="type" value="{{type}}" type="hidden" />
+
+  <div>
+    <button
+      type="submit"
+      class="w-full text-center py-2 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none my-1"
+    >
+      Create {{type}}
+    </button>
+  </div>
+</form>
+
+<script>
+var simplemde = new SimpleMDE({ 
+  element: document.getElementById("content-input"),
+  autosave: {
+		enabled: true,
+		uniqueId: "new-{{type}}",
+	},
+});
+</script>
 @endsection

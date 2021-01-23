@@ -48,11 +48,11 @@
 </div>
 <script>
   function deleteContent(contentId) {
-    const confirmed = window.confirm('Do you want to delete this content?')
+    var confirmed = window.confirm('Do you want to delete this content?')
     if (!confirmed) {
       return
     }
-    const path = `/~admin/contents/${contentId}`
+    var path = `/~admin/contents/${contentId}`
     window.fetch(path, {
       method: 'DELETE'
     })
