@@ -3,12 +3,6 @@
 
 @section('main')
   @if(page)
-  <h1>{{ page.title }}</h1>
-  @if(page.description)
-  <p>
-    {{ page.description }}
-  </p>
-  @endif
   <div>
     {{{ pageBody }}}
   </div>

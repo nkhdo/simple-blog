@@ -2,25 +2,24 @@
 @set('title', 'Blog Posts')
 
 @section('main')
-<div>
-  <h1>Blog Posts</h1>
+<ul>
   @each(post in posts)
-  <div>
+  <li>
     {{post.createdAt.toFormat('yyyy-MM-dd')}}
     <a href="/{{post.slug}}">{{post.title}}</a>
-  <div>
+  </li>
   @endeach
+</ul>
 
-  @if(filter)
-  <p>
-    <a href="/blog">Remove filter</a>
-  </p>
-  @elseif(tags.length)
-  <p>
-  @each(tag in tags)
-    <a href="/blog?tag={{tag}}">#{{tag}}</a>
-  @endeach
-  </p>
-  @endif
-</div>
+@if(filter)
+<p>
+  <a href="/blog">Remove filter</a>
+</p>
+@elseif(tags.length)
+<p>
+@each(tag in tags)
+  <a href="/blog?tag={{tag}}">#{{tag}}</a>
+@endeach
+</p>
+@endif
 @endsection

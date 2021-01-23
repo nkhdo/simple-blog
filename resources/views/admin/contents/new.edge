@@ -2,6 +2,7 @@
 @set('title', `Create new ${type}`)
 
 @section('main')
+<h2>Create new {{type}}</h2>
 <form action="{{ route('Admin/ContentsController.create') }}" method="post">
   <div>
     <input
@@ -34,17 +35,19 @@
     <p>{{ flashMessages.get('errors.content') || '' }}</p>
   </div>
 
+  @if(type === 'post')
   <div>
     <input
       type="text"
       name="tags"
       maxlength="128"
-      placeholder="tags, separated by comma (,)"
+      placeholder="tags, commas separated"
       value="{{ flashMessages.get('tags') || '' }}"
       autofocus
     />
     <p>{{ flashMessages.get('errors.tags') || '' }}</p>
   </div>
+  @endif
   <input name="type" value="{{type}}" type="hidden" />
 
   <div>

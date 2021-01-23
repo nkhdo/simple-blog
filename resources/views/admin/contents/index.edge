@@ -4,28 +4,32 @@
 @section('main')
 <div>
   <h2>Pages</h2>
-  @each(page in pages)
-  <div>
-    {{ page.title }}
-    <a href="/{{page.slug}}">view</a>
-    <a href="{{route('Admin/ContentsController.edit', { id: page.id })}}">edit</a>
-    <a onclick="deleteContent({{page.id}})">del</a>
-  </div>
-  @endeach
+  <ul>
+    @each(page in pages)
+    <li>
+      <span>{{ page.title }}</span>
+      <a href="/{{page.slug}}">view</a>
+      <a href="{{route('Admin/ContentsController.edit', { id: page.id })}}">edit</a>
+      <a onclick="deleteContent({{page.id}})">del</a>
+    </li>
+    @endeach
+  </ul>
   <div>
     <a href="{{route('Admin/ContentsController.new')}}?type=page">Create new Page</a>
   </div>
 </div>
 <div>
   <h2>Posts</h2>
+  <ul>
   @each(post in posts)
-  <div>
-    {{ post.title }}
+  <li>
+    <span>{{ post.title }}</span>
     <a href="/{{post.slug}}">view</a>
     <a href="{{route('Admin/ContentsController.edit', { id: post.id })}}">edit</a>
     <a onclick="deleteContent({{post.id}})">del</a>
-  </div>
+  </li>
   @endeach
+  </ul>
   <div>
     <a href="{{route('Admin/ContentsController.new')}}?type=post">Create new Post</a>
   </div>
