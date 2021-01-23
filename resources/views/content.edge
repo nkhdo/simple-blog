@@ -2,23 +2,20 @@
 @set('title', content.title)
 
 @section('main')
-<h1 class="my-4 text-4xl font-bold">{{ content.title }}</h1>
+<h1>{{ content.title }}</h1>
 @if(content.description)
-<p class="mb-3">
+<p>
   {{ content.description }}
 </p>
 @endif
-<div class="prose prose-blue">
+<div>
   {{{ contentBody }}}
 </div>
 @if(content.type === 'post' && content.tagsArray.length)
-<div class="my-4">
+<p>
   @each(tag in content.tagsArray)
-    <a 
-      href="/blog?tag={{tag}}"
-      class="text-blue-500 no-underline hover:underline"
-    >#{{tag}}</a>
+    <a href="/blog?tag={{tag}}">#{{tag}}</a>
   @endeach
-</div>
+</p>
 @endif
 @endsection

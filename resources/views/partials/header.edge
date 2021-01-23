@@ -1,17 +1,17 @@
 <header>
   <a href="/">
-    <h2 class="text-2xl font-semibold my-4">
-      Simple Blog
-    </h2>
+    <h2>Simple Blog</h2>
   </a>
 
   <navbar>
-    <a href="/" class="text-blue-500 no-underline hover:underline">Home</a>
-    <a href="/blog" class="text-blue-500 no-underline hover:underline ml-2">Blog</a>
+    <a href="/">Home</a>
+    <span>/</span>
+    <a href="/blog">Blog</a>
     @if(auth.isAuthenticated)
-    <span class="ml-2">|</span>
-    <a href="/~admin" class="text-blue-500 no-underline hover:underline ml-2">Admin</a>
-    <a href="/~logout" class="text-blue-500 no-underline hover:underline ml-2">Logout</a>
+    <span>|</span>
+    <a href="/~admin">Admin</a>
+    <span>/</span>
+    <a href="/~logout">Logout</a>
     @endif
   </navbar>
 </header>

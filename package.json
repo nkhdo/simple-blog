@@ -5,9 +5,9 @@
   "scripts": {
     "style:dev": "postcss ./resources/css/styles.css -o public/dist/styles.css",
     "style:prod": "NODE_ENV=production yarn style:dev",
-    "build": "yarn style:prod && node ace build --production",
+    "build": "node ace build --production",
     "start": "node server.js",
-    "dev": "yarn style:dev && node ace serve --watch",
+    "dev": "node ace serve --watch",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write ."
   },

@@ -2,30 +2,28 @@
 @set('title', 'Login')
 
 @section('main')
-  <form action="{{ route('AuthController.login') }}" method="post" class="mt-4">
-    <div class="mb-4">
+  <form action="{{ route('AuthController.login') }}" method="post">
+    <div>
       <input
         type="text"
         name="email"
         placeholder="Admin email"
         value="{{ flashMessages.get('email') || '' }}"
-        class="block border border-grey-light w-full p-2 rounded"
       />
-      <p class="text-red-500">{{ flashMessages.get('errors.email') || flashMessages.get('auth.errors.uid') || '' }}</p>
+      <p>{{ flashMessages.get('errors.email') || flashMessages.get('auth.errors.uid') || '' }}</p>
     </div>
 
-    <div class="mb-4">
+    <div>
       <input 
         type="password"
         name="password"
         placeholder="Password"
-        class="block border border-grey-light w-full p-2 rounded"
       />
-      <p class="text-red-500">{{ flashMessages.get('errors.password') || flashMessages.get('auth.errors.password') || '' }}</p>
+      <p>{{ flashMessages.get('errors.password') || flashMessages.get('auth.errors.password') || '' }}</p>
     </div>
 
-    <div class="mb-4">
-      <label class="block text-gray-500" for="remember">
+    <div>
+      <label for="remember">
         <input type="checkbox" id="remember" name="remember">
         <span>
           remember me
@@ -34,10 +32,7 @@
     </div>
 
     <div>
-      <button
-        type="submit"
-        class="w-full text-center py-2 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none my-1"
-      >
+      <button type="submit">
         Login
       </button>
     </div>

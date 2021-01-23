@@ -2,60 +2,53 @@
 @set('title', `Create new ${type}`)
 
 @section('main')
-<form action="{{ route('Admin/ContentsController.create') }}" method="post" class="mt-4">
-  <div class="mb-4">
+<form action="{{ route('Admin/ContentsController.create') }}" method="post">
+  <div>
     <input
       type="text"
       maxlength="128"
       name="title"
       placeholder="{{type}} title"
       value="{{ flashMessages.get('title') || '' }}"
-      class="block border border-grey-light w-full p-2 rounded"
       autofocus
     />
-    <p class="text-red-500">{{ flashMessages.get('errors.title') || '' }}</p>
+    <p>{{ flashMessages.get('errors.title') || '' }}</p>
   </div>
 
-  <div class="mb-4">
+  <div>
     <textarea
       name="description"
       maxlength="256"
       placeholder="{{type}} description"
-      class="block border border-grey-light w-full p-2 rounded"
     >{{ flashMessages.get('description') || '' }}</textarea>
-    <p class="text-red-500">{{ flashMessages.get('errors.description') || '' }}</p>
+    <p>{{ flashMessages.get('errors.description') || '' }}</p>
   </div>
 
-  <div class="mb-4">
+  <div>
     <textarea
       id="content-input"
       name="content"
       placeholder="{{type}} content"
       rows="10"
-      class="block border border-grey-light w-full p-2 rounded"
     >{{ flashMessages.get('content') || '' }}</textarea>
-    <p class="text-red-500">{{ flashMessages.get('errors.content') || '' }}</p>
+    <p>{{ flashMessages.get('errors.content') || '' }}</p>
   </div>
 
-  <div class="mb-4">
+  <div>
     <input
       type="text"
       name="tags"
       maxlength="128"
       placeholder="tags, separated by comma (,)"
       value="{{ flashMessages.get('tags') || '' }}"
-      class="block border border-grey-light w-full p-2 rounded"
       autofocus
     />
-    <p class="text-red-500">{{ flashMessages.get('errors.tags') || '' }}</p>
+    <p>{{ flashMessages.get('errors.tags') || '' }}</p>
   </div>
   <input name="type" value="{{type}}" type="hidden" />
 
   <div>
-    <button
-      type="submit"
-      class="w-full text-center py-2 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none my-1"
-    >
+    <button type="submit">
       Create {{type}}
     </button>
   </div>

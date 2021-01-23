@@ -3,55 +3,31 @@
 
 @section('main')
 <div>
-  <h2 class="mt-4 mb-1 text-xl font-semibold">Pages</h2>
+  <h2>Pages</h2>
   @each(page in pages)
   <div>
     {{ page.title }}
-    <a
-      href="/{{page.slug}}"
-      class="text-blue-500 no-underline hover:underline ml-1"
-    >view</a>
-    <a
-      href="{{route('Admin/ContentsController.edit', { id: page.id })}}"
-      class="text-blue-500 no-underline hover:underline ml-1"
-    >edit</a>
-    <a
-      class="text-blue-500 no-underline hover:underline cursor-pointer ml-1"
-      onclick="deleteContent({{page.id}})"
-    >del</a>
+    <a href="/{{page.slug}}">view</a>
+    <a href="{{route('Admin/ContentsController.edit', { id: page.id })}}">edit</a>
+    <a onclick="deleteContent({{page.id}})">del</a>
   </div>
   @endeach
   <div>
-    <a
-      href="{{route('Admin/ContentsController.new')}}?type=page"
-      class="text-blue-500 no-underline hover:underline"
-    >Create new Page</a>
+    <a href="{{route('Admin/ContentsController.new')}}?type=page">Create new Page</a>
   </div>
 </div>
 <div>
-  <h2 class="mt-4 mb-1 text-xl font-semibold">Posts</h2>
+  <h2>Posts</h2>
   @each(post in posts)
   <div>
     {{ post.title }}
-    <a
-      href="/{{post.slug}}"
-      class="text-blue-500 no-underline hover:underline ml-1"
-    >view</a>
-    <a
-      href="{{route('Admin/ContentsController.edit', { id: post.id })}}"
-      class="text-blue-500 no-underline hover:underline ml-1"
-    >edit</a>
-    <a
-      class="text-blue-500 no-underline hover:underline cursor-pointer ml-1"
-      onclick="deleteContent({{post.id}})"
-    >del</a>
+    <a href="/{{post.slug}}">view</a>
+    <a href="{{route('Admin/ContentsController.edit', { id: post.id })}}">edit</a>
+    <a onclick="deleteContent({{post.id}})">del</a>
   </div>
   @endeach
   <div>
-    <a
-      href="{{route('Admin/ContentsController.new')}}?type=post"
-      class="text-blue-500 no-underline hover:underline"
-    >Create new Post</a>
+    <a href="{{route('Admin/ContentsController.new')}}?type=post">Create new Post</a>
   </div>
 </div>
 <script>
