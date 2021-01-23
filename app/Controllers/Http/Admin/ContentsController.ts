@@ -69,6 +69,6 @@ export default class ContentsController {
     const content = await Content.findOrFail(params.id)
     await content.delete()
 
-    return response.redirect().toRoute('Admin/ContentsController.index')
+    return response.status(204)
   }
 }
