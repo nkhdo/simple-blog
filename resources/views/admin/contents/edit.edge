@@ -20,7 +20,7 @@
     <textarea
       name="description"
       maxlength="256"
-      placeholder="{{type}} description"
+      placeholder="{{content.type}} description"
     >{{content.description}}</textarea>
     <p>{{ flashMessages.get('errors.description') || '' }}</p>
   </div>
@@ -29,7 +29,7 @@
     <textarea
       id="content-input"
       name="content"
-      placeholder="{{type}} content"
+      placeholder="{{content.type}} content"
       rows="10"
     >{{content.content}}</textarea>
     <p>{{ flashMessages.get('errors.content') || '' }}</p>
