@@ -34,6 +34,7 @@
     "@adonisjs/repl": "^1.0.0",
     "@adonisjs/session": "^4.0.0",
     "@adonisjs/view": "^3.0.0",
+    "@tailwindcss/typography": "^0.4.0",
     "autoprefixer": "^10.2.3",
     "luxon": "^1.25.0",
     "markdown-it": "^12.0.4",
