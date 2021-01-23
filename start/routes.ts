@@ -28,13 +28,13 @@ Route.get('~login', 'AuthController.renderLogin')
 Route.post('~login', 'AuthController.login')
 Route.get('~logout', 'AuthController.logout')
 Route.group(() => {
-  Route.get('/', 'AdminController.renderAdmin')
-  Route.on('pages').render('admin/page')
+  Route.get('/', 'AdminController.index')
   Route.on('configs').render('admin/config')
 
   Route.group(() => {
-    Route.get('/', 'Admin/PostsController.renderPosts')
-  }).prefix('posts')
+    Route.get('/', 'Admin/ContentsController.index')
+    Route.get('/:id', 'Admin/ContentsController.edit')
+  }).prefix('contents')
 })
   .prefix('~admin')
   .middleware('auth')
