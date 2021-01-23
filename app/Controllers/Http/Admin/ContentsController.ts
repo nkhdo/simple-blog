@@ -50,7 +50,7 @@ export default class ContentsController {
     content.slug = slugify(contentDetails.title) // todo: ensure uniqueness
     content.description = contentDetails.description || ''
     content.content = contentDetails.content
-    content.tags = contentDetails.tags || ''
+    content.tags = (contentDetails.tags || '').toLowerCase()
 
     await content.save()
 
