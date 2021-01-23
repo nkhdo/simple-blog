@@ -1,11 +1,18 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Config from 'App/Models/Config'
 
+const defaultConfigs = {
+  title: 'Simple Blog',
+  description: 'My simple blog',
+  menuItems: [],
+}
+
 export default class SiteConfig {
   public async handle({ view }: HttpContextContract, next: () => Promise<void>) {
     const siteConfigs = await Config.findBy('key', 'site_configs')
 
-    let parsed: Record<string, any>
+    let parsed: Partial<typeof defaultConfigs>
+
     try {
       if (siteConfigs) {
         parsed = JSON.parse(siteConfigs.value)
@@ -15,7 +22,7 @@ export default class SiteConfig {
     }
 
     view.share({
-      siteConfigs: parsed,
+      siteConfigs: { ...defaultConfigs, ...parsed },
     })
 
     await next()
