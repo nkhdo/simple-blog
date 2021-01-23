@@ -42,8 +42,7 @@
       name="tags"
       maxlength="128"
       placeholder="tags, commas separated"
-      value="{{ flashMessages.get('tags') || '' }}"
-      autofocus
+      value="{{ content.tags }}"
     />
     <p>{{ flashMessages.get('errors.tags') || '' }}</p>
   </div>
