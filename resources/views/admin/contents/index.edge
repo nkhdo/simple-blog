@@ -8,6 +8,10 @@
   <div>
     {{ page.title }}
     <a
+      href="/{{page.slug}}"
+      class="text-blue-500 no-underline hover:underline ml-1"
+    >view</a>
+    <a
       href="{{route('Admin/ContentsController.edit', { id: page.id })}}"
       class="text-blue-500 no-underline hover:underline ml-1"
     >edit</a>
@@ -29,6 +33,10 @@
   @each(post in posts)
   <div>
     {{ post.title }}
+    <a
+      href="/{{post.slug}}"
+      class="text-blue-500 no-underline hover:underline ml-1"
+    >view</a>
     <a
       href="{{route('Admin/ContentsController.edit', { id: post.id })}}"
       class="text-blue-500 no-underline hover:underline ml-1"
