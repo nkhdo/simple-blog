@@ -1,7 +1,7 @@
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Config extends BaseModel {
-  @column({})
+  @column({ isPrimary: true })
   public key: string
 
   @column({})

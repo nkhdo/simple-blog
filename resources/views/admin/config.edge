@@ -2,7 +2,30 @@
 @set('title', 'Configurations')
 
 @section('main')
-<div>
-  Configs
-</div>
+<h2>Edit Site Configs</h2>
+<div id="configs-editor"></div>
+<button onclick="updateSettings()">
+  Save
+</button>
+
+<script>
+  var container = document.getElementById("configs-editor")
+  var options = {}
+  var editor = new JSONEditor(container, options)
+
+  editor.set({{{ JSON.stringify(siteConfigs) }}})
+
+  function updateSettings () {
+    var settings = editor.get()
+    window.fetch('/~admin/configs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(settings)
+    }).then(() => {
+      window.location.reload()
+    })
+  }
+</script>
 @endsection

@@ -30,6 +30,7 @@ Route.get('~logout', 'AuthController.logout')
 Route.group(() => {
   Route.get('/', 'AdminController.index')
   Route.on('configs').render('admin/config')
+  Route.post('configs', 'AdminController.updateSiteConfigs')
 
   Route.group(() => {
     Route.get('/', 'Admin/ContentsController.index')
