@@ -3,7 +3,7 @@
 
 @section('main')
 <div>
-  <h2 class="mt-4 mb-3 text-xl font-semibold">Pages</h2>
+  <h2 class="mt-4 mb-1 text-xl font-semibold">Pages</h2>
   @each(page in pages)
   <div>
     {{ page.title }}
@@ -12,14 +12,20 @@
       class="text-blue-500 no-underline hover:underline ml-1"
     >edit</a>
     <a
-      href="{{route('Admin/ContentsController.edit', { id: page.id })}}"
-      class="text-blue-500 no-underline hover:underline ml-1"
+      class="text-blue-500 no-underline hover:underline cursor-pointer ml-1"
+      onclick="deleteContent({{page.id}})"
     >del</a>
   </div>
   @endeach
+  <div>
+    <a
+      href="{{route('Admin/ContentsController.new')}}?type=page"
+      class="text-blue-500 no-underline hover:underline"
+    >Create new Page</a>
+  </div>
 </div>
 <div>
-  <h2 class="mt-4 mb-3 text-xl font-semibold">Posts</h2>
+  <h2 class="mt-4 mb-1 text-xl font-semibold">Posts</h2>
   @each(post in posts)
   <div>
     {{ post.title }}
@@ -28,10 +34,31 @@
       class="text-blue-500 no-underline hover:underline ml-1"
     >edit</a>
     <a
-      href="{{route('Admin/ContentsController.edit', { id: post.id })}}"
-      class="text-blue-500 no-underline hover:underline ml-1"
+      class="text-blue-500 no-underline hover:underline cursor-pointer ml-1"
+      onclick="deleteContent({{post.id}})"
     >del</a>
   </div>
   @endeach
+  <div>
+    <a
+      href="{{route('Admin/ContentsController.new')}}?type=post"
+      class="text-blue-500 no-underline hover:underline"
+    >Create new Post</a>
+  </div>
 </div>
+<script>
+  function deleteContent(contentId) {
+    const confirmed = window.confirm('Do you want to delete this content?')
+    if (!confirmed) {
+      return
+    }
+    const path = `/~admin/contents/${contentId}`
+    window.fetch(path, {
+      method: 'DELETE'
+    })
+      .then(() => {
+        window.location.reload()
+      })
+  }
+</script>
 @endsection

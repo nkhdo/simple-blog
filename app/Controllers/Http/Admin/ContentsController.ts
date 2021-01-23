@@ -14,11 +14,24 @@ export default class ContentsController {
     })
   }
 
+  public async new({ request, view }: HttpContextContract) {
+    return view.render('admin/contents/new', {
+      type: request.input('type') || 'post',
+    })
+  }
+
   public async edit({ params, view }: HttpContextContract) {
     const content = await Content.findOrFail(params.id)
 
     return view.render('admin/contents/edit', {
       content,
     })
+  }
+
+  public async destroy({ params, response }: HttpContextContract) {
+    const content = await Content.findOrFail(params.id)
+    await content.delete()
+
+    return response.redirect().toRoute('Admin/ContentsController.index')
   }
 }
