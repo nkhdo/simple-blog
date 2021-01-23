@@ -3,7 +3,7 @@ import Content from 'App/Models/Content'
 
 export default class PostsController {
   public async renderPosts({ view }: HttpContextContract) {
-    const posts = await Content.query().where('type', 'post')
+    const posts = await Content.query().where('type', 'post').orderBy('id', 'desc')
 
     return view.render('admin/posts/index', {
       posts,

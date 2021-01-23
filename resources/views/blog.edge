@@ -1,0 +1,18 @@
+@layout('layouts/master')
+@set('title', 'Blog Posts')
+
+@section('main')
+<div class="my-4">
+  @each(post in posts)
+  <div>
+    {{post.createdAt.toFormat('yyyy-MM-dd')}}
+    <a
+      href="/{{post.slug}}"
+      class="text-blue-500 no-underline hover:underline ml-2"
+    >
+      {{post.title}}
+    </a>
+  <div>
+  @endeach
+</div>
+@endsection
