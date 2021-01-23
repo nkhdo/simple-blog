@@ -3,6 +3,9 @@
 
 @section('main')
 <h1>{{ content.title }}</h1>
+<p>
+  <span>{{ content.createdAt.toFormat('yyyy/MM/dd HH:mm') }}</span>
+</p>
 @if(content.description)
 <p>
   {{ content.description }}
