@@ -27,3 +27,8 @@ Route.post('~setup', 'AuthController.setup')
 Route.get('~login', 'AuthController.renderLogin')
 Route.post('~login', 'AuthController.login')
 Route.get('~logout', 'AuthController.logout')
+Route.group(() => {
+  Route.get('/', 'AdminController.renderAdmin')
+})
+  .prefix('~admin')
+  .middleware(['auth'])
