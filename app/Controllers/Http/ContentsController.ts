@@ -5,6 +5,15 @@ import Content from 'App/Models/Content'
 const md = MarkdownIt()
 
 export default class ContentsController {
+  public async welcome({ view }: HttpContextContract) {
+    const page = await Content.query().where('type', 'page').where('slug', 'home').first()
+
+    return view.render('welcome', {
+      page,
+      pageBody: page ? md.render(page.content) : null,
+    })
+  }
+
   public async posts({ request, view }: HttpContextContract) {
     const posts = await Content.query()
       .where('type', 'post')

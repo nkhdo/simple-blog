@@ -1,20 +1,32 @@
 @layout('layouts/master')
-@set('title', 'Welcome!')
+@set('title', page ? page.title : 'Welcome!')
 
 @section('main')
-  @if(content)
+  @if(page)
+  <h1 class="my-4 text-4xl font-bold">{{ page.title }}</h1>
+  @if(page.description)
+  <p class="mb-3">
+    {{ page.description }}
+  </p>
+  @endif
+  <div class="prose prose-blue">
+    {{{ pageBody }}}
+  </div>
   @else
-    <h1 class="my-4 text-3xl">Welcome to this simple blog!</h1>
-    <p>
-      Please
-      @if(auth.isAuthenticated)
-        go to 
-        <a href="/~admin" class="text-blue-500 no-underline hover:underline">admin</a>
-        area
-      @else
-        <a href="{{ route('AuthController.renderLogin') }}" class="text-blue-500 no-underline hover:underline">login</a>
-      @endif
-      to start posting.
-    </p>
+  <h1 class="my-4 text-4xl">Welcome to this simple blog!</h1>
+  <p>
+    Please
+    @if(auth.isAuthenticated)
+      go to 
+      <a href="/~admin" class="text-blue-500 no-underline hover:underline">admin</a>
+      area
+    @else
+      <a href="{{ route('AuthController.renderLogin') }}" class="text-blue-500 no-underline hover:underline">login</a>
+    @endif
+    to start posting.
+  </p>
+  <p>
+    To replace homepage content, please create a new page and name it <b>Home</b>
+  </p>
   @endif
 @endsection
