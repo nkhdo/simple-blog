@@ -1,0 +1,8 @@
+version: "3.3"
+services:
+  web:
+    build: .
+    ports:
+      - "3333:3333"
+    volumes:
+      - ./tmp:/simple-blog/tmp
