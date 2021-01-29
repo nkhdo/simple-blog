@@ -4,11 +4,11 @@
     <loc>{{appUrl}}</loc>
   </url>
   <url>
-    <loc>{{`${appUrl}/blog`}}</loc>
+    <loc>{{appUrl}}/blog</loc>
   </url>
   @each(content in contents)
   <url>
-    <loc>{{`${appUrl}/${content.slug}`}}</loc>
+    <loc>{{appUrl}}/{{content.slug}}</loc>
     <lastmod>{{content.updatedAt.toFormat('yyyy-MM-dd')}}</lastmod>
   </url>
   @endeach

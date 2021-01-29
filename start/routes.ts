@@ -46,4 +46,5 @@ Route.group(() => {
 
 Route.get('blog', 'ContentsController.posts')
 Route.get('sitemap.xml', 'ContentsController.sitemap')
+Route.get('robots.txt', 'ContentsController.robots')
 Route.get(':slug', 'ContentsController.show')

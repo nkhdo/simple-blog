@@ -40,6 +40,12 @@ export default class ContentsController {
     return response.header('Content-Type', 'text/xml').send(sitemap)
   }
 
+  public async robots({ view, response }: HttpContextContract) {
+    const robots = view.render('robots')
+
+    return response.header('Content-Type', 'text/plain').send(robots)
+  }
+
   public async posts({ request, view }: HttpContextContract) {
     const posts = await Content.query()
       .where('type', 'post')
