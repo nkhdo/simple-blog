@@ -10,7 +10,5 @@ RUN cd build && yarn install --production
 FROM node:14.15.4-alpine
 WORKDIR /simple-blog
 COPY --from=builder /simple-blog/build ./
-COPY .env /simple-blog/
-RUN sed -i 's/development/production/g' .env
 EXPOSE 3333
 CMD yarn start

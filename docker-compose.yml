@@ -5,4 +5,5 @@ services:
     ports:
       - "3333:3333"
     volumes:
-      - ./tmp:/simple-blog/tmp
+      - ./.env:/simple-blog/.env
+      - ./tmp/:/simple-blog/tmp/
