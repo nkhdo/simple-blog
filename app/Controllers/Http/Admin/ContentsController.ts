@@ -80,8 +80,6 @@ export default class ContentsController {
     const content = await Content.findOrFail(params.id)
     content.merge(contentDetails)
 
-    console.log('---> content', content)
-
     await content.save()
 
     return response.redirect().toRoute('Admin/ContentsController.index')
