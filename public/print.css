@@ -1,1 +1,1 @@
-@media print{footer,header{display:none!important}}
+@media print{footer,header{display:none!important}}h2 .anchor,h3 .anchor{display:none} h2:hover .anchor{display:inline;float:left;margin-left:-20px;padding-right:4px} h3:hover .anchor{display:inline;float:left;margin-left:-16px;padding-right:4px}

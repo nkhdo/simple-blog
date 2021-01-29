@@ -1,16 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import Content from 'App/Models/Content'
-
-const slugify = (string: string, separator = '-') => {
-  return string
-    .normalize('NFD') // split an accented letter in the base letter and the acent
-    .replace(/[\u0300-\u036f]/g, '') // remove all previously split accents
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9\- ]/g, '') // remove all chars not letters, numbers and spaces (to be replaced)
-    .replace(/\s+/g, separator)
-}
+import slugify from 'App/Utils/slugify'
 
 export default class ContentsController {
   public async index({ view }: HttpContextContract) {

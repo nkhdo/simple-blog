@@ -1,7 +1,9 @@
 import MarkdownIt from 'markdown-it'
+import MarkdownItAnchor from 'markdown-it-anchor'
 import hljs from 'highlight.js'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Content from 'App/Models/Content'
+import slugify from 'App/Utils/slugify'
 
 const md = MarkdownIt({
   html: true,
@@ -13,9 +15,14 @@ const md = MarkdownIt({
         return hljs.highlight(lang, str).value
       } catch (__) {}
     }
-
     return '' // use external default escaping
   },
+}).use(MarkdownItAnchor, {
+  level: [2, 3],
+  slugify,
+  permalink: true,
+  permalinkBefore: true,
+  permalinkClass: 'anchor',
 })
 
 export default class ContentsController {
