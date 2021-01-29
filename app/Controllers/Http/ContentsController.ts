@@ -28,6 +28,18 @@ export default class ContentsController {
     })
   }
 
+  public async sitemap({ view, response }: HttpContextContract) {
+    const contents = await Content.query()
+      .select(['title', 'slug', 'tags', 'updated_at'])
+      .orderBy('id', 'desc')
+
+    const sitemap = view.render('sitemap', {
+      contents,
+    })
+
+    return response.header('Content-Type', 'text/xml').send(sitemap)
+  }
+
   public async posts({ request, view }: HttpContextContract) {
     const posts = await Content.query()
       .where('type', 'post')

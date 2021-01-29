@@ -45,4 +45,5 @@ Route.group(() => {
   .middleware('auth')
 
 Route.get('blog', 'ContentsController.posts')
+Route.get('sitemap.xml', 'ContentsController.sitemap')
 Route.get(':slug', 'ContentsController.show')

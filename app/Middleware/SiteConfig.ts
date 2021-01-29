@@ -1,5 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Config from 'App/Models/Config'
+import Env from '@ioc:Adonis/Core/Env'
 
 const defaultConfigs = {
   title: 'Simple Blog',
@@ -22,6 +23,7 @@ export default class SiteConfig {
     }
 
     view.share({
+      appUrl: Env.get('APP_URL'),
       siteConfigs: { ...defaultConfigs, ...parsed },
     })
 
