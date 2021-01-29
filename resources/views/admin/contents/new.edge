@@ -35,7 +35,6 @@
     <p>{{ flashMessages.get('errors.content') || '' }}</p>
   </div>
 
-  @if(type === 'post')
   <div>
     <input
       type="text"
@@ -46,7 +45,7 @@
     />
     <p>{{ flashMessages.get('errors.tags') || '' }}</p>
   </div>
-  @endif
+
   <input name="type" value="{{type}}" type="hidden" />
 
   <div>

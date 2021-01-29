@@ -8,6 +8,7 @@ export default class ConfigSeeder extends BaseSeeder {
       value: JSON.stringify({
         title: 'Simple Blog',
         description: 'My simple blog',
+        keywords: 'blog, simple',
         menuItems: [
           {
             title: 'About',

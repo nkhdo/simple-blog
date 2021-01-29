@@ -5,6 +5,7 @@ import Env from '@ioc:Adonis/Core/Env'
 const defaultConfigs = {
   title: 'Simple Blog',
   description: 'My simple blog',
+  keywords: 'blog, simple',
   menuItems: [],
 }
 
