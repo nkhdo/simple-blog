@@ -1,0 +1,19 @@
+@media print {
+  footer, header {
+    display: none !important;
+  }
+}
+h2 a, h3 a {
+  display: none;
+  float:left;
+} 
+h2:hover a {
+  display:inline;
+  margin-left:-20px;
+  padding-right:4px
+}
+h3:hover a {
+  display:inline;
+  margin-left:-16px;
+  padding-right:4px
+}

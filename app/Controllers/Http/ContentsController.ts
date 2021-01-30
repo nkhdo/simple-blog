@@ -22,7 +22,7 @@ const md = MarkdownIt({
   slugify,
   permalink: true,
   permalinkBefore: true,
-  permalinkClass: 'anchor',
+  permalinkClass: '',
 })
 
 export default class ContentsController {

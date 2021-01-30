@@ -1,8 +1,8 @@
 module.exports = (ctx) => ({
   plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-    cssnano:
+    'postcss-import': {},
+    'autoprefixer': {},
+    'cssnano':
       ctx.env === 'production'
         ? {
             preset: ['default', { discardComments: { removeAll: true } }],
