@@ -4,25 +4,34 @@
 @set('keywords', content.tags)
 
 @section('main')
-<h1>{{ content.title }}</h1>
-@if(content.type === 'post')
-<p>
-  <span>{{ content.createdAt.toFormat('yyyy/MM/dd HH:mm') }}</span>
-</p>
-@endif
-@if(content.description)
-<p>
-  {{ content.description }}
-</p>
-@endif
-<div>
-  {{{ contentBody }}}
-</div>
+<article>
+  <h1>{{ content.title }}</h1>
+  @if(content.type === 'post')
+  <p>
+    <span>{{ content.createdAt.toFormat('yyyy/MM/dd HH:mm') }}</span>
+  </p>
+  @endif
+  @if(content.description)
+  <p>
+    {{ content.description }}
+  </p>
+  @endif
+  <div>
+    {{{ contentBody }}}
+  </div>
+</article>
 @if(content.type === 'post' && content.tagsArray.length)
 <p>
+  <i>Tags</i>: 
   @each(tag in content.tagsArray)
     <a href="/blog?tag={{tag}}">#{{tag}}</a>
   @endeach
+</p>
+@endif
+@if(auth.isAuthenticated)
+<p>
+  <i>Admin:</i>
+  <a href="{{ route('Admin/ContentsController.update', { id: content.id }) }}">Edit this {{content.type}}</a>
 </p>
 @endif
 @endsection
