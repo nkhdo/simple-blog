@@ -2,6 +2,7 @@ import MarkdownIt from 'markdown-it'
 import MarkdownItAnchor from 'markdown-it-anchor'
 import MarkdownItLinkAttributes from 'markdown-it-link-attributes'
 import MarkdownItEmoji from 'markdown-it-emoji'
+import twemoji from 'twemoji'
 import hljs from 'highlight.js'
 import slugify from './slugify'
 
@@ -33,5 +34,9 @@ const md = MarkdownIt({
     },
   })
   .use(MarkdownItEmoji)
+
+md.renderer.rules.emoji = function (token, idx) {
+  return twemoji.parse(token[idx].content)
+}
 
 export default (markdown?: string): string => (markdown ? md.render(markdown) : '')
