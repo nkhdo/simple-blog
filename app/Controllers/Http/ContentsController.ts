@@ -1,29 +1,6 @@
-import MarkdownIt from 'markdown-it'
-import MarkdownItAnchor from 'markdown-it-anchor'
-import hljs from 'highlight.js'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Content from 'App/Models/Content'
-import slugify from 'App/Utils/slugify'
-
-const md = MarkdownIt({
-  html: true,
-  linkify: true,
-  typographer: true,
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(lang, str).value
-      } catch (__) {}
-    }
-    return '' // use external default escaping
-  },
-}).use(MarkdownItAnchor, {
-  level: [2, 3],
-  slugify,
-  permalink: true,
-  permalinkBefore: true,
-  permalinkClass: '',
-})
+import renderMarkdown from 'App/Utils/renderMarkdown'
 
 export default class ContentsController {
   public async welcome({ view }: HttpContextContract) {
@@ -31,7 +8,7 @@ export default class ContentsController {
 
     return view.render('welcome', {
       page,
-      pageBody: page ? md.render(page.content) : null,
+      pageBody: renderMarkdown(page?.content),
     })
   }
 
@@ -73,7 +50,7 @@ export default class ContentsController {
 
   public async show({ params, view }: HttpContextContract) {
     const content = await Content.findByOrFail('slug', params.slug)
-    const contentBody = md.render(content.content)
+    const contentBody = renderMarkdown(content.content)
 
     return view.render('content', {
       content,
