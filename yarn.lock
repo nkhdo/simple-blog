@@ -505,7 +505,14 @@
   resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-1.25.1.tgz#9f33aead0c7fdb86434059410c7a712517d97cd8"
   integrity sha512-enkMO4WJcbdkhK1eZrItF616buau02wtrSN+DDt9Qj9U23boSAXNJm0fMlgwpTDaRHq3S0D/SPIRbxy4YxBjiA==
 
-"@types/markdown-it@^12.0.1":
+"@types/markdown-it-link-attributes@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/markdown-it-link-attributes/-/markdown-it-link-attributes-3.0.0.tgz#3081a87bb6f554e817e9c3cdc83ebe135dd4bad3"
+  integrity sha512-iKz/AWy9Wut4rhctvkxMkpMLUt/3vwV9bzvYTn09AGTBA9MNnMMAsnmJjW5dEQdXANKoLoonOJjtYuGPmqTzXQ==
+  dependencies:
+    "@types/markdown-it" "*"
+
+"@types/markdown-it@*", "@types/markdown-it@^12.0.1":
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/@types/markdown-it/-/markdown-it-12.0.1.tgz#8391e19fea4796ff863edda55800c7e669beb358"
   integrity sha512-mHfT8j/XkPb1uLEfs0/C3se6nd+webC2kcqcy8tgcVr0GDEONv/xaQzAN+aQvkxQXk/jC0Q6mPS+0xhFwRF35g==
