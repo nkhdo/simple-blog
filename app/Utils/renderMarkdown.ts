@@ -1,6 +1,7 @@
 import MarkdownIt from 'markdown-it'
 import MarkdownItAnchor from 'markdown-it-anchor'
 import MarkdownItLinkAttributes from 'markdown-it-link-attributes'
+import MarkdownItEmoji from 'markdown-it-emoji'
 import hljs from 'highlight.js'
 import slugify from './slugify'
 
@@ -31,5 +32,6 @@ const md = MarkdownIt({
       rel: 'noopener',
     },
   })
+  .use(MarkdownItEmoji)
 
 export default (markdown?: string): string => (markdown ? md.render(markdown) : '')

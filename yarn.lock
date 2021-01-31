@@ -505,6 +505,13 @@
   resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-1.25.1.tgz#9f33aead0c7fdb86434059410c7a712517d97cd8"
   integrity sha512-enkMO4WJcbdkhK1eZrItF616buau02wtrSN+DDt9Qj9U23boSAXNJm0fMlgwpTDaRHq3S0D/SPIRbxy4YxBjiA==
 
+"@types/markdown-it-emoji@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/markdown-it-emoji/-/markdown-it-emoji-2.0.0.tgz#acc49b6e4ec1bc7eecbe26b894ccd25cb7db916d"
+  integrity sha512-X27jmmknSFzeKxqXQePwL1FfjFeIYNd0VT3lbZi7/Z+kHmYGBkFuOd/8O7LUqriIWfVXIt5EYAMg8idSn6MhHw==
+  dependencies:
+    "@types/markdown-it" "*"
+
 "@types/markdown-it-link-attributes@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/markdown-it-link-attributes/-/markdown-it-link-attributes-3.0.0.tgz#3081a87bb6f554e817e9c3cdc83ebe135dd4bad3"
@@ -3607,6 +3614,11 @@ markdown-it-anchor@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/markdown-it-anchor/-/markdown-it-anchor-7.0.1.tgz#2ea5353369e22b48d230fc849e205678821c6a86"
   integrity sha512-FF+1jvBAX04jlDUyz2qZGiz5PKw8MwWPb2EJvjvIiVuz7DcVMfW7b3NQnAiH52DSIQfMJ0FCAsQjhUpAOTGLMg==
+
+markdown-it-emoji@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-emoji/-/markdown-it-emoji-2.0.0.tgz#3164ad4c009efd946e98274f7562ad611089a231"
+  integrity sha512-39j7/9vP/CPCKbEI44oV8yoPJTpvfeReTn/COgRhSpNrjWF3PfP/JUxxB0hxV6ynOY8KH8Y8aX9NMDdo6z+6YQ==
 
 markdown-it-link-attributes@^3.0.0:
   version "3.0.0"
