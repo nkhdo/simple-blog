@@ -44,3 +44,4 @@ The fastest way is use [docker-compose](https://docs.docker.com/compose/)
 ```bash
 docker-compose up
 ```
+**Notes**: remember to set `NODE_ENV` to `production` before starting a production instance
