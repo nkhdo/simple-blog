@@ -1,6 +1,11 @@
 @layout('layouts/admin')
 @set('title', `Edit ${content.type}`)
 
+@section('head')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+@endsection
+
 @section('main')
 <h2>Edit {{content.type}}</h2>
 <form action="{{ route('Admin/ContentsController.update', { id: content.id }) }}" method="post">

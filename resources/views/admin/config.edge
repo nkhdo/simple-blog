@@ -1,6 +1,11 @@
 @layout('layouts/admin')
 @set('title', 'Configurations')
 
+@section('head')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsoneditor@9.1.8/dist/jsoneditor.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jsoneditor@9.1.8/dist/jsoneditor.min.js"></script>
+@endsection
+
 @section('main')
 <h2>Edit Site Configs</h2>
 <div id="configs-editor"></div>

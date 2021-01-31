@@ -1,6 +1,11 @@
 @layout('layouts/admin')
 @set('title', `Create new ${type}`)
 
+@section('head')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+@endsection
+
 @section('main')
 <h2>Create new {{type}}</h2>
 <form action="{{ route('Admin/ContentsController.create') }}" method="post">
