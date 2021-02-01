@@ -3,6 +3,9 @@
     display: none !important;
   }
 }
+ul, ol {
+  padding-inline-start: 20px;
+}
 h2 a, h3 a {
   display: none;
   float:left;
