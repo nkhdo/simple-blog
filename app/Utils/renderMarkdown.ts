@@ -24,7 +24,7 @@ const md = MarkdownIt({
     slugify,
     permalink: true,
     permalinkBefore: true,
-    permalinkClass: '',
+    permalinkClass: 'anchor',
   })
   .use(MarkdownItLinkAttributes, {
     pattern: /^https?:\/\//,

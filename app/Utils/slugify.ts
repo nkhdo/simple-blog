@@ -4,6 +4,7 @@ const slugify = (string: string, separator = '-') => {
     .replace(/[\u0300-\u036f]/g, '') // remove all previously split accents
     .toLowerCase()
     .trim()
+    .replace(/:.+:/g, '') // remove all emoji texts
     .replace(/[^a-z0-9\- ]/g, '') // remove all chars not letters, numbers and spaces (to be replaced)
     .replace(/\s+/g, separator)
 }

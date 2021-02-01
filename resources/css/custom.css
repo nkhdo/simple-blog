@@ -6,19 +6,18 @@
 ul, ol {
   padding-inline-start: 20px;
 }
-h2 a, h3 a {
+h2 .anchor, h3 .anchor {
   display: none;
   float:left;
+  padding-right:4px
 } 
-h2:hover a {
+h2:hover .anchor {
   display:inline;
   margin-left:-20px;
-  padding-right:4px
 }
-h3:hover a {
+h3:hover .anchor {
   display:inline;
   margin-left:-16px;
-  padding-right:4px
 }
 .emoji {
   width: 1.2em;
