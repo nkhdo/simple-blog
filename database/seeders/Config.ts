@@ -15,6 +15,7 @@ export default class ConfigSeeder extends BaseSeeder {
             path: '/about',
           },
         ],
+        twitterUser: null,
       }),
     })
   }

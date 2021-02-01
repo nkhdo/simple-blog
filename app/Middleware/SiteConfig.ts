@@ -7,6 +7,7 @@ const defaultConfigs = {
   description: 'My simple blog',
   keywords: 'blog, simple',
   menuItems: [],
+  twitterUser: '',
 }
 
 export default class SiteConfig {
