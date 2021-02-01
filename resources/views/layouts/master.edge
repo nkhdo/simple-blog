@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{ description || siteConfigs.description }}"/>
   <meta name="keywords" content="{{ keywords || siteConfigs.keywords }}" />
+  <meta name="twitter:card" content="summary" />
+  @if(siteConfigs.twitterUser)
+  <meta name="twitter:creator" content="{{ '@' + siteConfigs.twitterUser }}" />
+  @endif
+  <meta property="og:title" content="{{ title || siteConfigs.title }}" />
+  <meta property="og:description" content="{{ description || siteConfigs.description }}" />
   <title>{{ title ? `${title} | ${siteConfigs.title}` : siteConfigs.title }}</title>
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
   <link rel="stylesheet" href="/dist/styles.css">
