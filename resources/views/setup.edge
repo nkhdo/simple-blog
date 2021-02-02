@@ -32,6 +32,8 @@
       <p>{{ flashMessages.get('errors.password_confirmation') || '' }}</p>
     </div>
 
+    {{ csrfField() }}
+
     <div>
       <button type="submit">
         Create

@@ -51,6 +51,8 @@
     <p>{{ flashMessages.get('errors.tags') || '' }}</p>
   </div>
 
+  {{ csrfField() }}
+
   <div>
     <button type="submit">
       Update {{content.type}}
