@@ -44,7 +44,9 @@ export const csp: ShieldConfig['csp'] = {
   | }
   |
   */
-  directives: {},
+  directives: {
+    defaultSrc: ['self', '@nonce'],
+  },
 
   /*
   |--------------------------------------------------------------------------
