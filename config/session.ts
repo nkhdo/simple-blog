@@ -34,7 +34,7 @@ const sessionConfig: SessionConfig = {
   | The name of the cookie that will hold the session id.
   |
   */
-  cookieName: 'adonis-session',
+  cookieName: 'simple-blog-session',
 
   /*
   |--------------------------------------------------------------------------
@@ -75,7 +75,7 @@ const sessionConfig: SessionConfig = {
   cookie: {
     path: '/',
     httpOnly: true,
-    sameSite: false,
+    sameSite: true,
   },
 
   /*
