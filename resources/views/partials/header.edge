@@ -1,21 +1,19 @@
 <header>
-  <a href="/">
-    <h2>{{siteConfigs.title}}</h2>
-  </a>
-
-  <navbar>
-    <a href="/">Home</a>
-    <span>/</span>
-    @each(item in (siteConfigs.menuItems || []))
-    <a href="{{item.path}}">{{item.title}}</a>
-    <span>/</span>
-    @endeach
-    <a href="/blog">Blog</a>
-    @if(auth.isAuthenticated)
-    <span>/</span>
-    <a href="/~admin">Admin</a>
-    <span>/</span>
-    <a href="/~logout">Logout</a>
-    @endif
-  </navbar>
+  <strong>{{siteConfigs.title}}</strong>
 </header>
+
+<nav>
+  <a href="/">Home</a>
+  <span>/</span>
+  @each(item in (siteConfigs.menuItems || []))
+  <a href="{{item.path}}">{{item.title}}</a>
+  <span>/</span>
+  @endeach
+  <a href="/blog">Blog</a>
+  @if(auth.isAuthenticated)
+  <span>/</span>
+  <a href="/~admin">Admin</a>
+  <span>/</span>
+  <a href="/~logout">Logout</a>
+  @endif
+</nav>
