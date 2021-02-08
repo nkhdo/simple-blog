@@ -40,10 +40,8 @@
     if (!confirmed) {
       return
     }
-    var path = `/~admin/contents/${contentId}?_csrf={{ csrfToken }}`
-    window.fetch(path, {
-      method: 'DELETE'
-    })
+    var path = `/~admin/contents/${contentId}`
+    axios.delete(path)
       .then(() => {
         window.location.reload()
       })
