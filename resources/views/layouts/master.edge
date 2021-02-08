@@ -9,6 +9,7 @@
   @if(siteConfigs.twitterUser)
   <meta name="twitter:creator" content="{{ '@' + siteConfigs.twitterUser }}" />
   @endif
+  @!section('meta')
   <meta property="og:title" content="{{ title || siteConfigs.title }}" />
   <meta property="og:description" content="{{ description || siteConfigs.description }}" />
   <title>{{ title ? `${title} | ${siteConfigs.title}` : siteConfigs.title }}</title>
