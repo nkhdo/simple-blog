@@ -2,7 +2,7 @@
 @set('title', content.title)
 @set('description', content.description)
 @set('keywords', content.tags)
-@set('mainOnly', true)
+@set('mainOnly', content.type === 'post')
 
 @section('main')
 <article>
@@ -29,12 +29,18 @@
   </div>
 </article>
 
+@if(content.type === 'post' || auth.isAuthenticated)
 <p class="no-print">
-  <a href="/">Back to Home</a>
-  @if(auth.isAuthenticated)
+  @if(content.type === 'post')
+    <a href="/">Back to Home</a>
+  @endif
+  @if(content.type === 'post' && auth.isAuthenticated)
     <span>/</span>
+  @endif
+  @if(auth.isAuthenticated)
     <a href="{{ route('Admin/ContentsController.update', { id: content.id }) }}">Edit this {{content.type}}</a>
   @endif
 </p>
+@endif
 
 @endsection
