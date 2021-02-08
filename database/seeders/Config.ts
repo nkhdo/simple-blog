@@ -11,8 +11,12 @@ export default class ConfigSeeder extends BaseSeeder {
         keywords: 'blog, simple',
         menuItems: [
           {
-            title: 'About',
-            path: '/about',
+            title: 'Home',
+            path: '/',
+          },
+          {
+            title: 'Blog',
+            path: '/blog',
           },
         ],
         twitterUser: null,
