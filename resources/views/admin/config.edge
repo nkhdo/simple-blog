@@ -18,6 +18,10 @@
       <textarea id="keywords" x-model="local.keywords" placeholder="Commas (,) separated list of keywords" rows="3"></textarea>
     </div>
     <div>
+      <label for="site-thumbnail">Thumbnail</label>
+      <input id="site-thumbnail" type="text" x-model="local.thumbnail" placeholder="Link to thumbnail">
+    </div>
+    <div>
       <label for="twitter-user">Twitter username</label>
       <input id="twitter-user" type="text" x-model="local.twitterUser" placeholder="hoangdo_">
     </div>
@@ -83,6 +87,7 @@
         return this.local.title !== this.configs.title
           || this.local.description !== this.configs.description
           || this.local.keywords !== this.configs.keywords
+          || this.local.thumbnail !== this.configs.thumbnail
           || this.local.twitterUser !== this.configs.twitterUser
       },
       updateGeneralConfigs () {
@@ -90,6 +95,7 @@
           title: this.local.title,
           description: this.local.description,
           keywords: this.local.keywords,
+          thumbnail: this.local.thumbnail,
           twitterUser: this.local.twitterUser
         }
         axios.post('/~admin/configs', payload)
