@@ -10,6 +10,11 @@
     <a href="/{{post.slug}}">{{post.title}}</a>
   </li>
   @endeach
+  @if(posts.length === 0)
+  <li>
+    There's no published posts...
+  </li>
+  @endif
 </ul>
 
 @if(filter)
