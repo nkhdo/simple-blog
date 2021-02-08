@@ -2,10 +2,23 @@
 @set('title', content.title)
 @set('description', content.description)
 @set('keywords', content.tags)
+@set('mainOnly', true)
 
 @section('main')
 <article>
   <h1>{{ content.title }}</h1>
+  @if(content.type === 'post')
+    <p>
+      {{ content.createdAt.toFormat('yyyy/MM/dd HH:mm') }}
+    </p>
+    @if(content.tagsArray.length)
+      <p>
+        @each(tag in content.tagsArray)
+          <a href="/blog?tag={{tag}}">#{{tag}}</a>
+        @endeach
+      </p>
+    @endif
+  @endif
   @if(content.description)
   <blockquote>
     {{ content.description }}
@@ -16,23 +29,12 @@
   </div>
 </article>
 
-@if(content.type === 'post')
-  @if(content.tagsArray.length)
-  <p>
-    <i>Tags</i>: 
-    @each(tag in content.tagsArray)
-      <a href="/blog?tag={{tag}}">#{{tag}}</a>
-    @endeach
-  </p>
-  @endif
-  <p>
-    <i>Published</i>: <span>{{ content.createdAt.toFormat('yyyy/MM/dd HH:mm') }}</span>, <i>last modified</i>: <span>{{ content.updatedAt.toFormat('yyyy/MM/dd HH:mm') }}</span>.
-  </p>
-@endif
-@if(auth.isAuthenticated)
-  <p>
-    <i>Admin:</i>
+<p>
+  <a href="/">Back to Home</a>
+  @if(auth.isAuthenticated)
+    <span>/</span>
     <a href="{{ route('Admin/ContentsController.update', { id: content.id }) }}">Edit this {{content.type}}</a>
-  </p>
-@endif
+  @endif
+</p>
+
 @endsection

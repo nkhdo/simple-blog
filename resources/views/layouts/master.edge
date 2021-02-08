@@ -16,10 +16,14 @@
   <link rel="stylesheet" href="/dist/styles.css">
 </head>
 <body>
-  @include('partials/header')
+  @unless(mainOnly)
+    @include('partials/header')
+  @endunless
   <main>
     @!section('main')
   </main>
-  @include('partials/footer')
+  @unless(mainOnly)
+    @include('partials/footer')
+  @endunless
 </body>
 </html>
