@@ -1,5 +1,5 @@
 @layout('layouts/master')
-@set('title', 'Blog Posts')
+@set('title', filter ? `Blog posts - ${filter}` : 'Blog posts')
 
 @section('main')
 <h1>Blog posts</h1>
