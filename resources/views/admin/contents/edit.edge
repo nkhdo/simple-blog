@@ -22,6 +22,21 @@
   </div>
 
   <div>
+    <label>
+      <input
+        type="checkbox"
+        name="visible"
+        value="true"
+        @if(content.visible)
+          checked
+        @endif
+      />
+      Visible (show this content to public world)
+    </label>
+    <p>{{ flashMessages.get('errors.visible') || '' }}</p>
+  </div>
+
+  <div>
     <textarea
       name="description"
       maxlength="256"
