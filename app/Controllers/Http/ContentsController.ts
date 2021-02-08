@@ -14,6 +14,7 @@ export default class ContentsController {
 
   public async sitemap({ view, response }: HttpContextContract) {
     const contents = await Content.query()
+      .where('visible', true)
       .select(['title', 'slug', 'tags', 'updated_at'])
       .orderBy('id', 'desc')
 
@@ -33,6 +34,7 @@ export default class ContentsController {
   public async posts({ request, view }: HttpContextContract) {
     const posts = await Content.query()
       .where('type', 'post')
+      .where('visible', true)
       .select(['title', 'slug', 'tags', 'created_at'])
       .orderBy('id', 'desc')
 
@@ -49,7 +51,10 @@ export default class ContentsController {
   }
 
   public async show({ params, view }: HttpContextContract) {
-    const content = await Content.findByOrFail('slug', params.slug)
+    const content = await Content.query()
+      .where('slug', params.slug)
+      .where('visible', true)
+      .firstOrFail()
     const contentBody = renderMarkdown(content.content)
 
     return view.render('content', {

@@ -23,6 +23,9 @@ export default class Content extends BaseModel {
   @column()
   public content: string
 
+  @column()
+  public visible: boolean
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
