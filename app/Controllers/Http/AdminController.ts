@@ -10,7 +10,12 @@ export default class AdminController {
     const siteConfig = await Config.findByOrFail('key', 'site_configs')
 
     const content = request.post()
-    siteConfig.value = JSON.stringify(content)
+    const currentConfigs = JSON.parse(siteConfig.value)
+    const newConfigs = {
+      ...currentConfigs,
+      ...content,
+    }
+    siteConfig.value = JSON.stringify(newConfigs)
 
     await siteConfig.save()
 

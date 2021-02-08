@@ -1,37 +1,139 @@
 @layout('layouts/admin')
 @set('title', 'Configurations')
 
-@section('head')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsoneditor@9.1.8/dist/jsoneditor.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jsoneditor@9.1.8/dist/jsoneditor.min.js"></script>
-@endsection
-
 @section('main')
-<h2>Edit Site Configs</h2>
-<div id="configs-editor"></div>
-<p>
-  <button onclick="updateSettings()">Save</button>
-</p>
+<div x-data="siteConfigs()" x-init="cloneLocal()">
+  <h2 id="general-configs">General configs</h2>
+  <form x-on:submit.prevent="updateGeneralConfigs">
+    <div>
+      <label for="site-title" placeholder="Simple Blog">Site title</label>
+      <input id="site-title" type="text" x-model="local.title" placeholder="Simple Blog">
+    </div>
+    <div>
+      <label for="site-description">Site description</label>
+      <textarea id="site-description" x-model="local.description" placeholder="My Simple Blog" rows="3"></textarea>
+    </div>
+    <div>
+      <label for="keywords" placeholder="comma (,) separated">Meta keywords</label>
+      <textarea id="keywords" x-model="local.keywords" placeholder="Commas (,) separated list of keywords" rows="3"></textarea>
+    </div>
+    <div>
+      <label for="twitter-user">Twitter username</label>
+      <input id="twitter-user" type="text" x-model="local.twitterUser" placeholder="hoangdo_">
+    </div>
+
+    <div>
+      <button type="submit" x-bind:disabled="!generalConfigsChanged()">
+        Save
+      </button>
+    </div>
+  </form>
+
+  <h2 id="menu-items">Menu items</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Url</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <template x-for="(item, idx) in local.menuItems" :key="idx">
+        <tr>
+          <td>
+            <input x-model="item.title" placeholder="Title">
+          </td>
+          <td>
+            <input x-model="item.path" placeholder="Url">
+          </td>
+          <td>
+            <a href="#" @click.prevent="removeMenuItem(idx)">remove</a>
+          </td>
+        </tr>
+      </template>
+      <template x-if="local.menuItems.length === 0">
+        <tr >
+          <td colspan="3">
+            There's no items
+          </td>
+        </tr>
+      </template>
+    </tbody>
+  </table>
+  <div>
+    <button @click="addMenuItem">
+      Add item
+    </button>
+    <button x-bind:disabled="!menuItemsChanged()" @click="updateMenuItems">
+      Save
+    </button>
+  </div>
+</div>
 
 <script>
-  var container = document.getElementById("configs-editor")
-  var options = {}
-  var editor = new JSONEditor(container, options)
-
-  editor.set({{{ JSON.stringify(siteConfigs) }}})
-
-  function updateSettings () {
-    var settings = editor.get()
-    settings._csrf = '{{ csrfToken }}'
-    window.fetch('/~admin/configs', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
+  function siteConfigs() {
+    return {
+      configs: {{{ JSON.stringify(siteConfigs) }}},
+      local: {},
+      cloneLocal () {
+        this.local = JSON.parse(JSON.stringify(this.configs))
       },
-      body: JSON.stringify(settings)
-    }).then(() => {
-      window.location.reload()
-    })
+      generalConfigsChanged () {
+        return this.local.title !== this.configs.title
+          || this.local.description !== this.configs.description
+          || this.local.keywords !== this.configs.keywords
+          || this.local.twitterUser !== this.configs.twitterUser
+      },
+      updateGeneralConfigs () {
+        const payload = {
+          title: this.local.title,
+          description: this.local.description,
+          keywords: this.local.keywords,
+          twitterUser: this.local.twitterUser
+        }
+        axios.post('/~admin/configs', payload)
+          .then(() => {
+            window.alert('General configs updated!')
+            this.configs = { ...this.configs, ...payload }
+          })
+          .catch((error) => {
+            window.alert('Failed to update general configs!')
+            this.cloneLocal()
+          })
+      },
+      addMenuItem () {
+        this.local.menuItems.push({
+          title: '',
+          path: '/'
+        })
+      },
+      removeMenuItem (idx) {
+        this.local.menuItems.splice(idx, 1)
+      },
+      menuItemsChanged () {
+        const menu = this.configs.menuItems
+        const localMenu = this.local.menuItems
+        return menu.length !== localMenu.length || menu.some((item, i) => {
+          const local = localMenu[i]
+          return item.title !== local.title || item.path !== local.path
+        })
+      },
+      updateMenuItems () {
+        const payload = {
+          menuItems: JSON.parse(JSON.stringify(this.local.menuItems))
+        }
+        axios.post('/~admin/configs', payload)
+          .then(() => {
+            window.alert('Menu items updated!')
+            this.configs = { ...this.configs, ...payload }
+          })
+          .catch((error) => {
+            window.alert('Failed to update menu items!')
+            this.cloneLocal()
+          })
+      }
+    }
   }
 </script>
 @endsection
