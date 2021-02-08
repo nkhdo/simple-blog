@@ -40,7 +40,7 @@
     if (!confirmed) {
       return
     }
-    var path = `/~admin/contents/${contentId}`
+    var path = `/~admin/contents/${contentId}?_csrf={{ csrfToken }}`
     window.fetch(path, {
       method: 'DELETE'
     })
