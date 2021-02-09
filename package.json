@@ -1,6 +1,6 @@
 {
   "name": "simple-blog",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "private": true,
   "scripts": {
     "style:dev": "postcss ./resources/css/styles.css -o public/dist/styles.css",
@@ -10,7 +10,7 @@
     "dev": "yarn style:dev && node ace serve --watch",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
-    "postversion": "./publish-docker"
+    "postversion": "./publish-docker $npm_package_version"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^3.0.0",
