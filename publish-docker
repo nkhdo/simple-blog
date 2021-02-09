@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+  echo "Missing version number"
+else
+  echo "Publishing version $1"
+  docker build -t nkhdo/simple-blog:$1 .
+  docker publish nkhdo/simple-blog:$1
+  docker tag nkhdo/simple-blog:$1 nkhdo/simple-blog:latest
+  docker publish nkhdo/simple-blog:latest
+fi
