@@ -21,7 +21,7 @@
   @endif
   @if(content.description)
   <blockquote>
-    {{ content.description }}
+    {{{ renderMarkdown(content.description, siteConfigs.useKatex) }}}
   </blockquote>
   @endif
   <div>
