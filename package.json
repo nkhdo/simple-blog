@@ -1,6 +1,6 @@
 {
   "name": "simple-blog",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "private": true,
   "scripts": {
     "style:dev": "postcss ./resources/css/styles.css -o public/dist/styles.css",
