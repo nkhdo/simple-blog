@@ -33,8 +33,8 @@ export default class SiteConfig {
 
     view.share({
       appUrl: Env.get('APP_URL'),
-      t: i18n.i18n.__,
       locales: i18n.locales,
+      i18n: i18n.i18n,
       siteConfigs: mergedSiteConfigs,
     })
 
