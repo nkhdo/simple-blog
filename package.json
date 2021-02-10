@@ -41,6 +41,7 @@
     "@adonisjs/session": "^4.0.0",
     "@adonisjs/shield": "^4.0.3",
     "@adonisjs/view": "^3.0.0",
+    "@iktakahiro/markdown-it-katex": "^4.0.1",
     "autoprefixer": "^10.2.3",
     "highlight.js": "^10.5.0",
     "i18n": "^0.13.2",

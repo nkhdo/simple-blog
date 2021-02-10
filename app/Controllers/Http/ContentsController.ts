@@ -1,6 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Content from 'App/Models/Content'
-import renderMarkdown from 'App/Utils/renderMarkdown'
 
 export default class ContentsController {
   public async welcome({ view }: HttpContextContract) {
@@ -8,7 +7,6 @@ export default class ContentsController {
 
     return view.render('welcome', {
       page,
-      pageBody: renderMarkdown(page?.content),
     })
   }
 
@@ -55,11 +53,9 @@ export default class ContentsController {
       .where('slug', params.slug)
       .where('visible', true)
       .firstOrFail()
-    const contentBody = renderMarkdown(content.content)
 
     return view.render('content', {
       content,
-      contentBody,
     })
   }
 }

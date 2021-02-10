@@ -2,6 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Config from 'App/Models/Config'
 import Env from '@ioc:Adonis/Core/Env'
 import i18n from 'App/Services/I18n'
+import renderMarkdown from 'App/Utils/renderMarkdown'
 
 const defaultConfigs = {
   title: 'Simple Blog',
@@ -11,6 +12,7 @@ const defaultConfigs = {
   thumbnail: '',
   twitterUser: '',
   locale: 'en',
+  useKatex: false,
 }
 
 export default class SiteConfig {
@@ -36,6 +38,7 @@ export default class SiteConfig {
       locales: i18n.locales,
       i18n: i18n.i18n,
       siteConfigs: mergedSiteConfigs,
+      renderMarkdown,
     })
 
     await next()

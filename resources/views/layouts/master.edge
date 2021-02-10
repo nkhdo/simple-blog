@@ -22,6 +22,9 @@
   <title>{{ title ? `${title} | ${siteConfigs.title}` : siteConfigs.title }}</title>
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
   <link rel="stylesheet" href="/dist/styles.css">
+  @if(siteConfigs.useKatex)
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css">
+  @endif
 </head>
 <body>
   @unless(mainOnly)
