@@ -28,6 +28,7 @@ export default class SiteConfig {
     }
 
     const mergedSiteConfigs = { ...defaultConfigs, ...parsed }
+    console.log('---> mergedSiteConfigs', mergedSiteConfigs)
 
     i18n.setLocale(mergedSiteConfigs.locale)
 

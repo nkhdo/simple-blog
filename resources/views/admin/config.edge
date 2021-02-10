@@ -14,6 +14,14 @@
       <textarea id="site-description" x-model="local.description" placeholder="My Simple Blog" rows="3"></textarea>
     </div>
     <div>
+      <label for="site-language">Site Language</label>
+      <select x-model="local.locale">
+        @each(locale in locales)
+          <option value="{{locale}}">{{locale}}</option>
+        @endeach
+      </select>
+    </div>
+    <div>
       <label for="keywords" placeholder="comma (,) separated">Meta keywords</label>
       <textarea id="keywords" x-model="local.keywords" placeholder="Commas (,) separated list of keywords" rows="3"></textarea>
     </div>
@@ -89,6 +97,7 @@
           || this.local.keywords !== this.configs.keywords
           || this.local.thumbnail !== this.configs.thumbnail
           || this.local.twitterUser !== this.configs.twitterUser
+          || this.local.locale !== this.configs.locale
       },
       updateGeneralConfigs () {
         const payload = {
@@ -96,7 +105,8 @@
           description: this.local.description,
           keywords: this.local.keywords,
           thumbnail: this.local.thumbnail,
-          twitterUser: this.local.twitterUser
+          twitterUser: this.local.twitterUser,
+          locale: this.local.locale
         }
         axios.post('/~admin/configs', payload)
           .then(() => {
