@@ -14,7 +14,7 @@
       <textarea id="site-description" x-model="local.description" placeholder="My Simple Blog" rows="3"></textarea>
     </div>
     <div>
-      <label for="site-language">Site Language</label>
+      <label for="site-language">Site Language (applied to blog view only)</label>
       <select x-model="local.locale">
         @each(locale in locales)
           <option value="{{locale}}">{{locale}}</option>
