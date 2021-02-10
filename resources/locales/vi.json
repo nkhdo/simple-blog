@@ -1,6 +1,7 @@
 {
   "blogPosts": "Bài đăng trên blog",
-  "blogPostsFilteredBy": "Đang hiển thị các bài đăng về %s",
+  "blogPostsFilteredBy": "Đang hiển thị các bài đăng về",
+  "removeFilter": "Bỏ lọc",
   "backToBlog": "Quay trở về Blog",
   "poweredBy": "Cung cấp bởi"
 }

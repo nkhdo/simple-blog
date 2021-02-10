@@ -2,10 +2,10 @@
 @set('title', filter ? `Blog posts - ${filter}` : 'Blog posts')
 
 @section('main')
-<h1>Blog posts</h1>
+<h1>{{ t('blogPosts') }}</h1>
 @if(filter)
 <p>
-  Showing blog posts for <a href="/blog?tag={{filter}}">#{{filter}}</a> [<a href="/blog">Remove filter</a>]
+  {{ t('blogPostsFilteredBy') }} <a href="/blog?tag={{filter}}">#{{filter}}</a> [<a href="/blog">{{ t('removeFilter') }}</a>]
 </p>
 @else
 <p>

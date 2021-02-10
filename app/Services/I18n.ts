@@ -2,6 +2,7 @@ import path from 'path'
 import { I18n } from 'i18n'
 
 class I18nService {
+  public readonly locales = ['en', 'vi']
   public isReady = false
   public i18n: I18n
 
@@ -9,7 +10,7 @@ class I18nService {
     this.i18n = new I18n()
 
     this.i18n.configure({
-      locales: ['en', 'vi'],
+      locales: this.locales,
       defaultLocale: 'en',
       directory: path.join(__dirname, '../../resources/locales'),
     })

@@ -33,8 +33,9 @@ export default class SiteConfig {
 
     view.share({
       appUrl: Env.get('APP_URL'),
+      t: i18n.i18n.__,
+      locales: i18n.locales,
       siteConfigs: mergedSiteConfigs,
-      i18n,
     })
 
     await next()
