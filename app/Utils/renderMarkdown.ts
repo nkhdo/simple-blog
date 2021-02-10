@@ -35,10 +35,17 @@ const md = MarkdownIt({
     },
   })
   .use(MarkdownItEmoji)
-  .use(MarkdownItKatex)
 
 md.renderer.rules.emoji = function (token, idx) {
   return twemoji.parse(token[idx].content)
 }
 
-export default (markdown?: string): string => (markdown ? md.render(markdown) : '')
+export default (markdown?: string, useKatex = false): string => {
+  if (!markdown) {
+    return ''
+  }
+  if (useKatex) {
+    return md.use(MarkdownItKatex).render(markdown)
+  }
+  return md.render(markdown)
+}
