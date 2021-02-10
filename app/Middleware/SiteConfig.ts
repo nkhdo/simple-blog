@@ -11,6 +11,7 @@ const defaultConfigs = {
   thumbnail: '',
   twitterUser: '',
   locale: 'en',
+  useKatex: false,
 }
 
 export default class SiteConfig {

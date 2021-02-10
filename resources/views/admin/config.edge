@@ -5,34 +5,40 @@
 <div x-data="siteConfigs()" x-init="cloneLocal()">
   <h2 id="general-configs">General configs</h2>
   <form x-on:submit.prevent="updateGeneralConfigs">
-    <div>
+    <p>
       <label for="site-title" placeholder="Simple Blog">Site title</label>
       <input id="site-title" type="text" x-model="local.title" placeholder="Simple Blog">
-    </div>
-    <div>
+    </p>
+    <p>
       <label for="site-description">Site description</label>
       <textarea id="site-description" x-model="local.description" placeholder="My Simple Blog" rows="3"></textarea>
-    </div>
-    <div>
+    </p>
+    <p>
       <label for="site-language">Site Language (applied to blog view only)</label>
       <select x-model="local.locale">
         @each(locale in locales)
           <option value="{{locale}}">{{locale}}</option>
         @endeach
       </select>
-    </div>
-    <div>
+    </p>
+    <p>
       <label for="keywords" placeholder="comma (,) separated">Meta keywords</label>
       <textarea id="keywords" x-model="local.keywords" placeholder="Commas (,) separated list of keywords" rows="3"></textarea>
-    </div>
-    <div>
+    </p>
+    <p>
       <label for="site-thumbnail">Thumbnail</label>
       <input id="site-thumbnail" type="text" x-model="local.thumbnail" placeholder="Link to thumbnail">
-    </div>
-    <div>
+    </p>
+    <p>
       <label for="twitter-user">Twitter username</label>
       <input id="twitter-user" type="text" x-model="local.twitterUser" placeholder="hoangdo_">
-    </div>
+    </p>
+    <p>
+      <input id="use-katex" type="checkbox" x-model="local.useKatex" >
+      <label for="use-katex">
+        Use <a href="https://katex.org/" target="_blank" rel="noopener">Katex</a> to render math expressions
+      </label>
+    </p>
 
     <div>
       <button type="submit" x-bind:disabled="!generalConfigsChanged()">
@@ -98,6 +104,7 @@
           || this.local.thumbnail !== this.configs.thumbnail
           || this.local.twitterUser !== this.configs.twitterUser
           || this.local.locale !== this.configs.locale
+          || this.local.useKatex !== this.configs.useKatex
       },
       updateGeneralConfigs () {
         const payload = {
@@ -106,7 +113,8 @@
           keywords: this.local.keywords,
           thumbnail: this.local.thumbnail,
           twitterUser: this.local.twitterUser,
-          locale: this.local.locale
+          locale: this.local.locale,
+          useKatex: this.local.useKatex
         }
         axios.post('/~admin/configs', payload)
           .then(() => {
