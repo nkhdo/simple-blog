@@ -10,7 +10,8 @@
     "dev": "yarn style:dev && node ace serve --watch",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
-    "postversion": "git push --tags && ./publish-docker $npm_package_version"
+    "postversion": "git push --tags && ./publish-docker $npm_package_version",
+    "postbuild": "cp -R ./resources/locales ./build/resources"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^3.0.0",
