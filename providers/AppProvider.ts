@@ -9,7 +9,13 @@ export default class AppProvider {
 
   public async boot() {}
 
-  public async ready() {}
+  public async ready() {
+    const App = await import('@ioc:Adonis/Core/Application')
+
+    if (App.default.environment === 'web') {
+      await import('../start/i18n')
+    }
+  }
 
   public async shutdown() {}
 }

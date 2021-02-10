@@ -2,10 +2,10 @@
 @set('title', filter ? `Blog posts - ${filter}` : 'Blog posts')
 
 @section('main')
-<h1>Blog posts</h1>
+<h1>{{ i18n.__('blogPosts') }}</h1>
 @if(filter)
 <p>
-  Showing blog posts for <a href="/blog?tag={{filter}}">#{{filter}}</a> [<a href="/blog">Remove filter</a>]
+  {{ i18n.__('blogPostsFilteredBy') }} <a href="/blog?tag={{filter}}">#{{filter}}</a> [<a href="/blog">{{ i18n.__('removeFilter') }}</a>]
 </p>
 @else
 <p>
