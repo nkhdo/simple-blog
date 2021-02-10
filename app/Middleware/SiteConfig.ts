@@ -1,6 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Config from 'App/Models/Config'
 import Env from '@ioc:Adonis/Core/Env'
+import i18n from 'App/Services/I18n'
 
 const defaultConfigs = {
   title: 'Simple Blog',
@@ -9,6 +10,7 @@ const defaultConfigs = {
   menuItems: [],
   thumbnail: '',
   twitterUser: '',
+  locale: 'en',
 }
 
 export default class SiteConfig {
@@ -25,9 +27,14 @@ export default class SiteConfig {
       parsed = {}
     }
 
+    const mergedSiteConfigs = { ...defaultConfigs, ...parsed }
+
+    i18n.setLocale(mergedSiteConfigs.locale)
+
     view.share({
       appUrl: Env.get('APP_URL'),
-      siteConfigs: { ...defaultConfigs, ...parsed },
+      siteConfigs: mergedSiteConfigs,
+      i18n,
     })
 
     await next()
