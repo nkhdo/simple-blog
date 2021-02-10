@@ -7,45 +7,43 @@ import twemoji from 'twemoji'
 import hljs from 'highlight.js'
 import slugify from './slugify'
 
-const md = MarkdownIt({
-  html: true,
-  linkify: true,
-  typographer: true,
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(lang, str).value
-      } catch (__) {}
-    }
-    return '' // use external default escaping
-  },
-})
-  .use(MarkdownItAnchor, {
-    level: [2, 3],
-    slugify,
-    permalink: true,
-    permalinkBefore: true,
-    permalinkClass: 'anchor',
-  })
-  .use(MarkdownItLinkAttributes, {
-    pattern: /^https?:\/\//,
-    attrs: {
-      target: '_blank',
-      rel: 'noopener',
+export const createMarkdownRenderer = (useKatex = false) => {
+  const md = MarkdownIt({
+    html: true,
+    linkify: true,
+    typographer: true,
+    highlight: function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return hljs.highlight(lang, str).value
+        } catch (__) {}
+      }
+      return '' // use external default escaping
     },
   })
-  .use(MarkdownItEmoji)
+    .use(MarkdownItAnchor, {
+      level: [2, 3],
+      slugify,
+      permalink: true,
+      permalinkBefore: true,
+      permalinkClass: 'anchor',
+    })
+    .use(MarkdownItLinkAttributes, {
+      pattern: /^https?:\/\//,
+      attrs: {
+        target: '_blank',
+        rel: 'noopener',
+      },
+    })
+    .use(MarkdownItEmoji)
 
-md.renderer.rules.emoji = function (token, idx) {
-  return twemoji.parse(token[idx].content)
-}
-
-export default (markdown?: string, useKatex = false): string => {
-  if (!markdown) {
-    return ''
+  md.renderer.rules.emoji = function (token, idx) {
+    return twemoji.parse(token[idx].content)
   }
+
   if (useKatex) {
-    return md.use(MarkdownItKatex).render(markdown)
+    md.use(MarkdownItKatex)
   }
-  return md.render(markdown)
+
+  return (markdown?: string): string => (markdown ? md.render(markdown) : '')
 }

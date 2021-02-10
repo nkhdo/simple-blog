@@ -4,7 +4,7 @@
 @section('main')
   @if(page)
   <div>
-    {{{ renderMarkdown(page.content, siteConfigs.useKatex) }}}
+    {{{ renderMarkdown(page.content) }}}
   </div>
   @else
   <h1>Welcome to simple-blog!</h1>
