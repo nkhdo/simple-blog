@@ -87,6 +87,24 @@
       Save
     </button>
   </div>
+
+  <h2 id="code-injection">Code Injection</h2>
+
+  <form x-on:submit.prevent="updateCodeInjection">
+    <p>
+      <label for="site-header">Site header</label>
+      <textarea id="site-header" x-model="local.customHead" placeholder="Custom code in header" rows="3"></textarea>
+    </p>
+    <p>
+      <label for="site-header">Site footer</label>
+      <textarea id="site-header" x-model="local.customFoot" placeholder="Custom code in footer" rows="3"></textarea>
+    </p>
+    <div>
+      <button type="submit" x-bind:disabled="!codeInjectionChanged()">
+        Save
+      </button>
+    </div>
+  </form>
 </div>
 
 <script>
@@ -154,6 +172,25 @@
           })
           .catch((error) => {
             window.alert('Failed to update menu items!')
+            this.cloneLocal()
+          })
+      },
+      codeInjectionChanged () {
+        return this.local.customHead !== this.configs.customHead
+          || this.local.customFoot !== this.configs.customFoot
+      },
+      updateCodeInjection () {
+        const payload = {
+          customHead: this.local.customHead,
+          customFoot: this.local.customFoot
+        }
+        axios.post('/~admin/configs', payload)
+          .then(() => {
+            window.alert('Code injection configs updated!')
+            this.configs = { ...this.configs, ...payload }
+          })
+          .catch((error) => {
+            window.alert('Failed to update code injection configs!')
             this.cloneLocal()
           })
       }

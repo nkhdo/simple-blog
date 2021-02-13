@@ -13,6 +13,8 @@ const defaultConfigs = {
   twitterUser: '',
   locale: 'en',
   useKatex: false,
+  customHead: '',
+  customFoot: '',
 }
 
 export default class SiteConfig {
