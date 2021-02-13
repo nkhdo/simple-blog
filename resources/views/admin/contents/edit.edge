@@ -70,7 +70,7 @@
 
   <div>
     <button type="button" onclick="saveContent()">
-      Save {{content.type}}
+      Save {{content.type}} (Ctrl + S)
     </button>
     <button type="submit">
       Save and go back
@@ -89,9 +89,7 @@ var simplemde = new SimpleMDE({
 
 function saveContent () {
   const formData = new FormData(document.querySelector('#editor'))
-  console.log('---> formData', formData);
   const json = Object.fromEntries(formData)
-  console.log('---> json', json);
 
   axios.post('{{ route('Admin/ContentsController.update', { id: content.id }) }}', {
     ...json,
@@ -104,5 +102,14 @@ function saveContent () {
       console.log(error)
     }) 
 }
+
+document.addEventListener('keydown', function(e) {
+  // Ctrl + S
+  if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)  && e.keyCode == 83) {
+    e.preventDefault();
+    saveContent()
+  }
+}, false);
+
 </script>
 @endsection
