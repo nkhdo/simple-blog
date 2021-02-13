@@ -78,8 +78,14 @@ export default class ContentsController {
 
     await content.save()
 
-    return response.redirect().toRoute('Admin/ContentsController.index')
+    switch (request.accepts(['json', 'html'])) {
+      case 'json':
+        return response.status(204)
+      default:
+        return response.redirect().toRoute('Admin/ContentsController.index')
+    }
   }
+
   public async destroy({ params, response }: HttpContextContract) {
     const content = await Content.findOrFail(params.id)
     await content.delete()
