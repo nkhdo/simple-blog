@@ -181,8 +181,8 @@
       },
       updateCodeInjection () {
         const payload = {
-          customHead: this.local.customHead,
-          customFoot: this.local.customFoot
+          customHead: (this.local.customHead || '').trim(),
+          customFoot: (this.local.customFoot || '').trim()
         }
         axios.post('/~admin/configs', payload)
           .then(() => {
