@@ -44,7 +44,6 @@ export default class Content extends BaseModel {
     const existingSlugs = (
       await Content.query().select(['slug']).where('slug', 'LIKE', `${slug}%`)
     ).map((r) => r.slug)
-    console.log('---> existingRecords', existingSlugs)
 
     if (!existingSlugs.length) {
       return slug
