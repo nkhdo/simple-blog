@@ -39,7 +39,7 @@ export default class ContentsController {
     const content = new Content()
     content.type = contentDetails.type as 'post' | 'page'
     content.title = contentDetails.title
-    content.slug = slugify(contentDetails.title) // todo: ensure uniqueness
+    content.slug = await Content.generateSlug(contentDetails.title)
     content.description = contentDetails.description || ''
     content.content = contentDetails.content
     content.tags = (contentDetails.tags || '').toLowerCase()
