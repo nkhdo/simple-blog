@@ -96,8 +96,8 @@
       <textarea id="site-header" x-model="local.customHead" placeholder="Custom code in header" rows="3"></textarea>
     </p>
     <p>
-      <label for="site-header">Site footer</label>
-      <textarea id="site-header" x-model="local.customFoot" placeholder="Custom code in footer" rows="3"></textarea>
+      <label for="site-footer">Site footer</label>
+      <textarea id="site-footer" x-model="local.customFoot" placeholder="Custom code in footer" rows="3"></textarea>
     </p>
     <div>
       <button type="submit" x-bind:disabled="!codeInjectionChanged()">
@@ -110,7 +110,7 @@
 <script>
   function siteConfigs() {
     return {
-      configs: {{{ JSON.stringify(siteConfigs) }}},
+      configs: {{{ JSON.stringify(siteConfigs, true, 2) }}},
       local: {},
       cloneLocal () {
         this.local = JSON.parse(JSON.stringify(this.configs))
