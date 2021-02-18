@@ -10,6 +10,9 @@
   <meta property="article:modified_time" content="{{ content.updatedAt.toISO() }}" />
   <meta property="article:author" content="{{ appUrl }}" />
   @endif
+  @if(content.customMeta)
+  {{{ content.customMeta }}}
+  @endif
 @endsection
 
 @section('main')

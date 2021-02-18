@@ -29,7 +29,7 @@ export default class ContentsController {
       content: schema.string({ trim: true }),
       tags: schema.string.optional({ trim: true }, [rules.maxLength(128)]),
       visible: schema.boolean.optional(),
-      custom_meta: schema.string.optional(),
+      custom_meta: schema.string.optional({ trim: true }),
     })
 
     const contentDetails = await request.validate({
@@ -66,7 +66,7 @@ export default class ContentsController {
       content: schema.string({ trim: true }),
       tags: schema.string.optional({ trim: true }, [rules.maxLength(128)]),
       visible: schema.boolean.optional(),
-      custom_meta: schema.string.optional(),
+      custom_meta: schema.string.optional({ trim: true }),
     })
 
     const contentDetails = await request.validate({
