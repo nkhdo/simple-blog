@@ -1,7 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import Content from 'App/Models/Content'
-import slugify from 'App/Utils/slugify'
 
 export default class ContentsController {
   public async index({ view }: HttpContextContract) {
