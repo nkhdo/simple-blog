@@ -29,6 +29,7 @@ export default class ContentsController {
       content: schema.string({ trim: true }),
       tags: schema.string.optional({ trim: true }, [rules.maxLength(128)]),
       visible: schema.boolean.optional(),
+      custom_meta: schema.string.optional(),
     })
 
     const contentDetails = await request.validate({
@@ -43,6 +44,7 @@ export default class ContentsController {
     content.content = contentDetails.content
     content.tags = (contentDetails.tags || '').toLowerCase()
     content.visible = contentDetails.visible || false
+    content.customMeta = contentDetails.custom_meta || ''
 
     await content.save()
 
@@ -64,6 +66,7 @@ export default class ContentsController {
       content: schema.string({ trim: true }),
       tags: schema.string.optional({ trim: true }, [rules.maxLength(128)]),
       visible: schema.boolean.optional(),
+      custom_meta: schema.string.optional(),
     })
 
     const contentDetails = await request.validate({
@@ -71,9 +74,12 @@ export default class ContentsController {
     })
 
     const content = await Content.findOrFail(params.id)
-    content.merge(contentDetails)
-
-    content.visible = !!contentDetails.visible
+    content.title = contentDetails.title
+    content.description = contentDetails.description || ''
+    content.content = contentDetails.content
+    content.tags = (contentDetails.tags || '').toLowerCase()
+    content.visible = contentDetails.visible || false
+    content.customMeta = contentDetails.custom_meta || ''
 
     await content.save()
 

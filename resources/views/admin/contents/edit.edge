@@ -66,6 +66,16 @@
     <p>{{ flashMessages.get('errors.tags') || '' }}</p>
   </div>
 
+  <div>
+    <textarea
+      id="custom-meta-input"
+      name="custom_meta"
+      placeholder="Custom meta tags"
+      rows="3"
+    >{{content.customMeta || ''}}</textarea>
+    <p>{{ flashMessages.get('errors.custom_meta') || '' }}</p>
+  </div>
+
   {{ csrfField() }}
 
   <div>
