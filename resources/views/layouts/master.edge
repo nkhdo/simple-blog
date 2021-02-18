@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{ description || siteConfigs.description }}"/>
   <meta name="keywords" content="{{ keywords || siteConfigs.keywords }}" />
-  <meta property="og:title" content="{{ title || siteConfigs.title }}" />
-  <meta property="og:description" content="{{ description || siteConfigs.description }}" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:description" content="{{ description || siteConfigs.description }}">
   <meta name="twitter:title" content="{{ title || siteConfigs.title }}">
@@ -16,8 +14,10 @@
   @endif
   @if(siteConfigs.thumbnail)
   <meta name="twitter:image" content="{{ siteConfigs.thumbnail }}">
-  <meta name="og:image" content="{{ siteConfigs.thumbnail }}">
+  <meta property="og:image" content="{{ siteConfigs.thumbnail }}">
   @endif
+  <meta property="og:title" content="{{ title || siteConfigs.title }}" />
+  <meta property="og:description" content="{{ description || siteConfigs.description }}" />
   @!section('meta')
   <title>{{ title ? `${title} | ${siteConfigs.title}` : siteConfigs.title }}</title>
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
