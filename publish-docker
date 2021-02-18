@@ -5,8 +5,8 @@ then
   echo "Missing version number"
 else
   echo "Publishing version $1"
-  docker build -t nkhdo/simple-blog:$1 .
-  docker push nkhdo/simple-blog:$1
-  docker tag nkhdo/simple-blog:$1 nkhdo/simple-blog:latest
+  docker build -t nkhdo/simple-blog:latest .
   docker push nkhdo/simple-blog:latest
+  docker tag nkhdo/simple-blog:latest nkhdo/simple-blog:$1
+  docker push nkhdo/simple-blog:$1
 fi
