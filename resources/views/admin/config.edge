@@ -110,7 +110,7 @@
 <script>
   function siteConfigs() {
     return {
-      configs: {{{ JSON.stringify(siteConfigs, true, 2) }}},
+      configs: JSON.parse(decodeURIComponent('{{ encodeURIComponent(JSON.stringify(siteConfigs)) }}')),
       local: {},
       cloneLocal () {
         this.local = JSON.parse(JSON.stringify(this.configs))
