@@ -59,6 +59,8 @@ const staticConfig: AssetsConfig = {
   |
   */
   lastModified: true,
+  cacheControl: true,
+  maxAge: 86400 * 1000 * 2,
 }
 
 export default staticConfig
