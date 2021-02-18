@@ -2,7 +2,15 @@
 @set('title', content.title)
 @set('description', content.description)
 @set('keywords', content.tags)
+@set('ogType', content.type === 'post' ? 'article' : 'website')
 @set('mainOnly', content.type === 'post')
+@section('meta')
+  @if(content.type === 'post')
+  <meta property="article:published_time" content="{{ content.createdAt.toISO() }}" />
+  <meta property="article:modified_time" content="{{ content.updatedAt.toISO() }}" />
+  <meta property="article:author" content="{{ appUrl }}" />
+  @endif
+@endsection
 
 @section('main')
 <article>

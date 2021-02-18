@@ -16,8 +16,11 @@
   <meta name="twitter:image" content="{{ siteConfigs.thumbnail }}">
   <meta property="og:image" content="{{ siteConfigs.thumbnail }}">
   @endif
+  <meta property="og:site_name" content="{{ siteConfigs.title }}">
   <meta property="og:title" content="{{ title || siteConfigs.title }}" />
   <meta property="og:description" content="{{ description || siteConfigs.description }}" />
+  <meta property="og:url" content="{{ appUrl + request.url() }}" />
+  <meta property="og:type" content="{{ ogType || 'website' }}" />
   @!section('meta')
   <title>{{ title ? `${title} | ${siteConfigs.title}` : siteConfigs.title }}</title>
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
