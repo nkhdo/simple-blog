@@ -27,6 +27,7 @@ export const createMarkdownRenderer = (useKatex = false) => {
       permalink: true,
       permalinkBefore: true,
       permalinkClass: 'anchor',
+      permalinkAttrs: () => ({ 'aria-hidden': true }),
     })
     .use(MarkdownItLinkAttributes, {
       pattern: /^https?:\/\//,
