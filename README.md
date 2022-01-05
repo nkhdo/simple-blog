@@ -1,5 +1,5 @@
 # simple-blog
-A simple and lightweight blog engine. [Demo](https://hoang.do)
+A simple and lightweight blog engine. [Demo](https://realhuy.com)
 
 ## Prerequisite
 You will need
